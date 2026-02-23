@@ -55,6 +55,21 @@
       </div>
     </div>
 
+    <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
+        <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
+            <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
+            <ul class="text-base space-y-3 text-emerald-50 italic">
+                <li>• معالجة كافة درجات البواسير دون ألم.</li>
+                <li>• الضمان بعدم الرجوع ثانيةً بإذن الله.</li>
+                <li>• لا تأثير على عضلات التحكم أو مزاولة العمل.</li>
+            </ul>
+        </div>
+        <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
+            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع:</h2>
+            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. شفاء تام ونهائي بإذن الله.</p>
+        </div>
+    </div>
+
     <div class="max-w-6xl mx-auto px-6 py-10 text-center">
       <h2 class="text-3xl font-black mb-12 italic text-amber-400">آراء زبائننا ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -116,21 +131,15 @@
     f.onsubmit = async (e) => {
       e.preventDefault();
       btn.disabled = true; btn.innerText = 'جاري الإرسال...';
-      
       try {
-        // إرسال البيانات للتليجرام
         await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ chat_id: ID, text: `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع` })
         });
         
-        // إطلاق الحدث لـ GTM لكي يقوم البكسل بإرسال "Lead"
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          'event': 'form_submission',
-          'form_id': 'orderForm'
-        });
+        window.dataLayer.push({ 'event': 'form_submission', 'form_id': 'orderForm' }); // إرسال الإشارة للتاج مانجر
 
         document.getElementById('statusMsg').classList.remove('hidden');
         btn.innerText = 'تم الإرسال بنجاح ✅';
