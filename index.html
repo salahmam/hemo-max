@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hemo Max - الحل النهائي للبواسير</title>
-
+  
   <script src="pixels.js"></script>
 
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -12,108 +12,109 @@
   <style>
     * { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
     .gradient-bg { background: linear-gradient(135deg, #0d9488 0%, #065f46 50%, #064e3b 100%); }
-    .soft-edges { mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%); -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%); }
-    .float-animation { animation: float 3s ease-in-out infinite; }
-    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-    .pulse-btn { animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 50% { box-shadow: 0 0 0 20px rgba(245, 158, 11, 0); } }
     .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+    .pulse-btn:not(:disabled) { animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
   </style>
  </head>
- <body class="bg-[#064e3b] overflow-x-hidden">
-  
-  <div class="gradient-bg min-h-screen w-full relative overflow-hidden flex flex-col items-center justify-center p-6 lg:p-12">
-   <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-emerald-400 opacity-20 blur-[120px] rounded-full"></div>
-   <div class="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 max-w-7xl w-full">
+ <body class="bg-[#064e3b] text-white">
+  <div class="gradient-bg min-h-screen">
     
-    <div class="flex-1 text-center lg:text-right order-2 lg:order-1">
-     <div class="inline-flex items-center gap-2 bg-amber-500 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-xl">
-      <span>⭐ منتج أصلي ومضمون 100%</span>
-     </div>
-
-     <h1 class="text-4xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight drop-shadow-md">
-      عصارة هيمو ماكس <br>
-      <span class="text-amber-400 text-3xl lg:text-5xl">وداعاً للألم.. استعد راحتك الآن!</span>
-     </h1>
-
-     <p class="text-emerald-100 text-xl mb-8 max-w-2xl leading-relaxed">
-      تركيبة طبيعية متطورة تمنحك راحة فورية من البواسير والشقوق الشرجية. لا داعي للقلق بعد اليوم مع هيمو ماكس الأصلي.
-     </p>
-
-     <div class="glass-effect p-6 rounded-3xl inline-block mb-10 shadow-2xl border-amber-500/30">
-      <p class="text-emerald-200 text-lg mb-1">عرض خاص لفترة محدودة</p>
-      <div class="text-5xl font-black text-yellow-400 italic">15,000 د.ع</div>
-     </div>
-
-     <div class="flex flex-col sm:flex-row items-center gap-5 justify-center lg:justify-start">
-      <a href="https://wa.me/9647710011031?text=اريد+طلب+هيمو+ماكس" 
-         onclick="if(typeof fbq !== 'undefined') { fbq('track', 'Contact'); } if(typeof ttq !== 'undefined') { ttq.track('Contact'); }"
-         class="pulse-btn bg-gradient-to-r from-amber-500 to-amber-600 text-white text-2xl font-black py-5 px-12 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95">
-        🛒 اطلب الآن - الدفع عند الاستلام
-      </a>
-     </div>
-    </div>
-
-    <div class="flex-1 flex items-center justify-center order-1 lg:order-2">
-     <div class="relative float-animation">
-      <div class="absolute inset-0 bg-emerald-500 opacity-40 blur-[100px] rounded-full scale-90"></div>
-      <img src="image-name.jpeg" alt="Hemo Max" class="relative z-10 w-80 lg:w-[550px] h-auto object-contain soft-edges drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]">
-     </div>
-    </div>
-   </div>
-  </div>
-
-  <div class="py-12 px-6 bg-[#043d2e]">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="glass-effect p-6 rounded-2xl text-center text-white hover:bg-white/20 transition-colors">
-        <div class="text-3xl mb-2">🚚</div>
-        <div class="font-bold">توصيل سريع</div>
-        <div class="text-xs text-emerald-300">لكافة المحافظات</div>
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12">
+      <div class="flex-1 text-center lg:text-right">
+        <div class="inline-block bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-6">⭐ منتج أصلي ومضمون 100%</div>
+        <h1 class="text-4xl lg:text-6xl font-black mb-6 leading-tight italic">وداعاً للألم.. <br><span class="text-amber-400">استعد راحتك مع هيمو ماكس!</span></h1>
+        <p class="text-emerald-100 text-lg mb-8">تركيبة طبيعية متطورة تمنحك راحة فورية من البواسير والشقوق الشرجية من الاستخدام الأول.</p>
+        
+        <div class="glass-effect p-8 rounded-[2rem] border-white/20 shadow-2xl">
+          <h2 class="text-xl font-bold mb-6 text-amber-400">احجز طلبك الآن (الدفع عند الاستلام)</h2>
+          <form id="orderForm" class="space-y-4">
+            <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
+            <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
+            <input type="text" id="address" required placeholder="المحافظة والمنطقة" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
+            <div class="grid grid-cols-2 gap-4">
+              <input type="number" id="quantity" value="1" min="1" class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white text-center font-bold">
+              <div class="p-4 bg-amber-500 rounded-xl text-[#064e3b] font-black text-center leading-none">
+                <span class="text-xs block mb-1">المجموع الكلي</span>
+                <span id="totalPrice">19,000</span> د.ع
+              </div>
+            </div>
+            <button type="submit" id="submitBtn" disabled class="w-full p-5 rounded-2xl bg-amber-500 text-[#064e3b] font-black text-xl pulse-btn">تأكيد الحجز الآن 🚚</button>
+          </form>
+          <p id="statusMsg" class="mt-4 text-emerald-400 font-bold hidden">✅ تم استلام طلبك! سنتصل بك قريباً.</p>
+        </div>
       </div>
-      <div class="glass-effect p-6 rounded-2xl text-center text-white hover:bg-white/20 transition-colors">
-        <div class="text-3xl mb-2">🌿</div>
-        <div class="font-bold">مكونات طبيعية</div>
-        <div class="text-xs text-emerald-300">آمن وفعال جداً</div>
-      </div>
-      <div class="glass-effect p-6 rounded-2xl text-center text-white hover:bg-white/20 transition-colors">
-        <div class="text-3xl mb-2">📦</div>
-        <div class="font-bold">دفع عند الاستلام</div>
-        <div class="text-xs text-emerald-300">افحص قبل الدفع</div>
-      </div>
-      <div class="glass-effect p-6 rounded-2xl text-center text-white hover:bg-white/20 transition-colors">
-        <div class="text-3xl mb-2">✅</div>
-        <div class="font-bold">ضمان الجودة</div>
-        <div class="text-xs text-emerald-300">منتج أصلي 100%</div>
+
+      <div class="flex-1 flex justify-center">
+        <img src="image-name.jpeg" alt="Hemo Max" class="w-80 lg:w-[500px] h-auto object-contain drop-shadow-2xl">
       </div>
     </div>
-  </div>
 
-  <div class="py-20 px-6 bg-emerald-900/30">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl lg:text-5xl font-black text-white mb-12 italic tracking-tight">ماذا يقول زبائننا؟ ❤️</h2>
+    <div class="max-w-6xl mx-auto px-6 py-20 border-t border-white/10">
+      <h2 class="text-3xl font-black text-center mb-12">ماذا يقول زبائننا؟ ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white/10 p-8 rounded-3xl border border-white/5 shadow-xl">
-          <div class="flex text-amber-400 mb-4 justify-center">⭐⭐⭐⭐⭐</div>
-          <p class="text-white italic mb-4 leading-relaxed">"بصراحة جربت هواي شغلات وما فادتني، بس هيمو ماكس من أول استخدام حسيت براحة وفرق كبير. أنصح بي بشدة."</p>
-          <div class="text-emerald-300 font-bold">- أبو مرتضى (بغداد)</div>
+        <div class="glass-effect p-6 rounded-3xl text-center">
+          <div class="text-amber-400 mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="italic mb-4 text-sm">"من أول استخدام حسيت براحة كبيرة، التوصيل كان سريع والمنتج أصلي."</p>
+          <span class="text-emerald-300 font-bold text-xs">- أبو مرتضى (بغداد)</span>
         </div>
-        <div class="bg-white/10 p-8 rounded-3xl border border-white/5 shadow-xl">
-          <div class="flex text-amber-400 mb-4 justify-center">⭐⭐⭐⭐⭐</div>
-          <p class="text-white italic mb-4 leading-relaxed">"التوصيل كان سريع والتعامل راقي. المنتج أصلي وفعلاً يخلصك من الألم من الأيام الأولى."</p>
-          <div class="text-emerald-300 font-bold">- أم سارة (البصرة)</div>
+        <div class="glass-effect p-6 rounded-3xl text-center border-amber-500/20">
+          <div class="text-amber-400 mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="italic mb-4 text-sm">"شكراً هيمو ماكس، فعلاً خلصني من الألم بعد معاناة طويلة. أنصح به بشدة."</p>
+          <span class="text-emerald-300 font-bold text-xs">- أم سارة (البصرة)</span>
         </div>
-        <div class="bg-white/10 p-8 rounded-3xl border border-white/5 shadow-xl">
-          <div class="flex text-amber-400 mb-4 justify-center">⭐⭐⭐⭐⭐</div>
-          <p class="text-white italic mb-4 leading-relaxed">"السعر جداً مناسب مقارنة بالنتيجة. أهم شي الالتزام بالاستخدام والنتيجة مضمونة."</p>
-          <div class="text-emerald-300 font-bold">- محمد الساعدي (النجف)</div>
+        <div class="glass-effect p-6 rounded-3xl text-center">
+          <div class="text-amber-400 mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="italic mb-4 text-sm">"تعامل راقي جداً وسعر مناسب للنتيجة الجبارة. شكراً لكم."</p>
+          <span class="text-emerald-300 font-bold text-xs">- محمد الساعدي (النجف)</span>
         </div>
       </div>
     </div>
+
   </div>
 
-  <footer class="py-12 text-center text-emerald-400/50 text-sm border-t border-white/5">
-    <p>© 2026 هيمو ماكس العراق - جميع الحقوق محفوظة</p>
-  </footer>
+  <script>
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const addressInput = document.getElementById('address');
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceSpan = document.getElementById('totalPrice');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('orderForm');
 
+    // معلومات التليجرام الخاصة بك
+    const TELEGRAM_TOKEN = '8723279205:AAHGuUzyFM0vbo3FuMva2F_B7lgpeqDtofs';
+    const CHAT_ID = '-4898876332'; 
+
+    function updatePrice() {
+      const total = (parseInt(quantityInput.value) * 15000) + 4000;
+      totalPriceSpan.innerText = total.toLocaleString();
+      submitBtn.disabled = !(nameInput.value && phoneInput.value && addressInput.value);
+    }
+
+    [nameInput, phoneInput, addressInput, quantityInput].forEach(el => el.addEventListener('input', updatePrice));
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'جاري الحجز...';
+
+      const message = `📦 *طلب جديد* 📦\n👤 *الاسم:* ${nameInput.value}\n📞 *الهاتف:* ${phoneInput.value}\n📍 *العنوان:* ${addressInput.value}\n🔢 *الكمية:* ${quantityInput.value}\n💰 *المبلغ:* ${totalPriceSpan.innerText} د.ع`;
+
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+      });
+
+      // إرسال حدث Lead لفيسبوك بكسل
+      if(typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+      
+      document.getElementById('statusMsg').classList.remove('hidden');
+      submitBtn.innerText = 'تم الإرسال ✅';
+      form.reset();
+      updatePrice();
+    };
+  </script>
  </body>
 </html>
