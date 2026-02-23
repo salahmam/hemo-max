@@ -15,8 +15,15 @@
     .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
     .pulse-btn { animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; }
+    
+    /* تنسيق الفيديو لمنع النقر على الروابط الخارجية */
+    .video-wrapper { position: relative; border-radius: 20px; overflow: hidden; border: 4px solid rgba(255, 255, 255, 0.1); }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    
+    /* طبقة شفافة تمنع النقر على شعار القناة واسمها */
+    .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 60px; z-index: 10; cursor: default; }
+    .video-overlay-bottom { position: absolute; bottom: 0; right: 0; width: 100px; height: 50px; z-index: 10; cursor: default; }
   </style>
  </head>
  <body class="bg-[#064e3b] text-white overflow-x-hidden">
@@ -34,14 +41,16 @@
       </div>
 
       <div class="flex-1 w-full max-w-lg">
-        <div class="video-container shadow-2xl border-4 border-white/10">
-          <iframe 
-            src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1&rel=0&autoplay=0&mute=0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+        <div class="video-wrapper shadow-2xl">
+          <div class="video-overlay"></div> <div class="video-overlay-bottom"></div> <div class="video-container">
+            <iframe 
+              src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&autoplay=0&mute=0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-        <p class="text-center text-xs mt-2 text-emerald-200 italic font-bold">🔊 اضغط لتشغيل فيديو المنتج الأصلي بالصوت</p>
+        <p class="text-center text-xs mt-3 text-emerald-200 italic font-bold">🔊 اضغط لتشغيل فيديو المنتج بالصوت</p>
       </div>
     </div>
 
@@ -57,23 +66,7 @@
         </div>
         <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
             <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع من الجذور:</h2>
-            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذا العقار الجديد فعال في إنهاء الألم والنزيف بشكل نهائي [00:00:37].</p>
-        </div>
-    </div>
-
-    <div class="max-w-5xl mx-auto px-6 py-10">
-        <div class="bg-black/30 border-2 border-white/10 p-8 rounded-[3rem]">
-            <h2 class="text-3xl font-black text-center text-amber-400 mb-8 italic">📝 طريقة الاستخدام الصحيحة</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-                <div class="space-y-3">
-                    <h4 class="font-black text-emerald-300">📍 الحالات الخارجية:</h4>
-                    <p class="text-sm italic leading-relaxed">دهن كمية قليلة وتوزيعها بالأصبع لتغطية المنطقة بالكامل.</p>
-                </div>
-                <div class="space-y-3">
-                    <h4 class="font-black text-emerald-300">📍 الحالات الداخلية:</h4>
-                    <p class="text-sm italic leading-relaxed">إدخال كمية قليلة داخل فتحة الشرج باستخدام الأداة المخصصة.</p>
-                </div>
-            </div>
+            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذه التقنية تضمن الشفاء التام بإذن الله وتنهي أعراض الحكة والنزيف [00:00:37].</p>
         </div>
     </div>
 
@@ -81,23 +74,26 @@
       <h2 class="text-3xl font-black mb-12 italic text-amber-400">آراء زبائننا ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="glass-effect p-8 rounded-3xl border-white/10 italic">
-          <div class="text-amber-400 text-xl mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="font-bold text-emerald-300 mb-1">أبو مرتضى - بغداد</p>
+          <div class="text-amber-400 text-lg mb-2">⭐⭐⭐⭐⭐</div>
           <p class="text-sm text-emerald-50">"المنتج فعال جداً والتوصيل سريع، ارتحت عليه من أول يوم."</p>
         </div>
         <div class="glass-effect p-8 rounded-3xl border-amber-500/30 transform scale-105 bg-white/5 italic">
-          <div class="text-amber-400 text-xl mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="font-bold text-emerald-300 mb-1">الحاج جاسم - البصرة</p>
+          <div class="text-amber-400 text-lg mb-2">⭐⭐⭐⭐⭐</div>
           <p class="text-sm text-emerald-50">"أفضل علاج جربته، يغنيك عن العمليات والجراحة تماماً."</p>
         </div>
         <div class="glass-effect p-8 rounded-3xl border-white/10 italic">
-          <div class="text-amber-400 text-xl mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="text-sm text-emerald-50">"تعامل راقي ومنتج أصلي، شكراً للمصداقية."</p>
+          <p class="font-bold text-emerald-300 mb-1">أستاذ أحمد - أربيل</p>
+          <div class="text-amber-400 text-lg mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="text-sm text-emerald-50">"تعامل راقي ومنتج أصلي ومصداقية تامة."</p>
         </div>
       </div>
     </div>
 
     <div id="orderSection" class="max-w-4xl mx-auto px-6 py-20">
         <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl">
-          <h3 class="text-3xl font-black text-center mb-8 italic text-white text-balance">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
+          <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
           <form id="orderForm" class="space-y-4">
             <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none">
             <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none">
@@ -111,7 +107,7 @@
               <div class="flex flex-col justify-center">
                 <div class="text-sm italic">سعر المنتج: 15,000 د.ع</div>
                 <div class="text-sm text-amber-400 font-bold italic">التوصيل: + 4,000 د.ع</div>
-                <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2 font-black">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
+                <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
               </div>
             </div>
             
@@ -140,7 +136,7 @@
     f.onsubmit = async (e) => {
       e.preventDefault();
       btn.disabled = true; btn.innerText = 'جاري الإرسال...';
-      const msg = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع\n🚚 (شامل التوصيل)`;
+      const msg = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع`;
       try {
         await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
           method: 'POST',
