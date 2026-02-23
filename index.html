@@ -17,30 +17,45 @@
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
   </style>
  </head>
- <body class="bg-[#064e3b] text-white">
+ <body class="bg-[#064e3b] text-white overflow-x-hidden">
   <div class="gradient-bg min-h-screen">
     
     <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12">
       <div class="flex-1 text-center lg:text-right">
-        <div class="inline-block bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-6">⭐ منتج أصلي ومضمون 100%</div>
-        <h1 class="text-4xl lg:text-6xl font-black mb-6 leading-tight italic">وداعاً للألم.. <br><span class="text-amber-400">استعد راحتك مع هيمو ماكس!</span></h1>
-        <p class="text-emerald-100 text-lg mb-8">تركيبة طبيعية متطورة تمنحك راحة فورية من البواسير والشقوق الشرجية من الاستخدام الأول.</p>
+        <div class="inline-block bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-6 italic">⭐ منتج أصلي ومضمون 100%</div>
+        <h1 class="text-4xl lg:text-6xl font-black mb-6 leading-tight italic text-balance">وداعاً للألم.. <br><span class="text-amber-400 font-black">استعد راحتك مع هيمو ماكس!</span></h1>
         
-        <div class="glass-effect p-8 rounded-[2rem] border-white/20 shadow-2xl">
-          <h2 class="text-xl font-bold mb-6 text-amber-400">احجز طلبك الآن (الدفع عند الاستلام)</h2>
+        <div class="glass-effect p-8 rounded-[2rem] border-white/20 shadow-2xl mb-6">
+          <h2 class="text-xl font-bold mb-6 text-amber-400">احجز طلبك الآن (دفع عند الاستلام)</h2>
           <form id="orderForm" class="space-y-4">
             <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
             <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
-            <input type="text" id="address" required placeholder="المحافظة والمنطقة" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
-            <div class="grid grid-cols-2 gap-4">
-              <input type="number" id="quantity" value="1" min="1" class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white text-center font-bold">
-              <div class="p-4 bg-amber-500 rounded-xl text-[#064e3b] font-black text-center leading-none">
-                <span class="text-xs block mb-1">المجموع الكلي</span>
-                <span id="totalPrice">19,000</span> د.ع
+            <input type="text" id="address" required placeholder="العنوان (المحافظة والمنطقة)" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-1">
+                <span class="text-xs text-emerald-300 mr-2 uppercase">الكمية المطلوبة:</span>
+                <input type="number" id="quantity" value="1" min="1" class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white text-center font-bold text-xl">
+              </div>
+              <div class="bg-black/20 p-4 rounded-xl border border-white/5 flex flex-col justify-center items-center">
+                <div class="text-xs text-emerald-300 mb-1">تفاصيل الفاتورة:</div>
+                <div class="text-sm">المنتج: <span id="productPrice">15,000</span> د.ع</div>
+                <div class="text-sm text-amber-400">التوصيل: + 4,000 د.ع</div>
+                <div class="font-black text-xl mt-1 text-white border-t border-white/10 pt-1">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
               </div>
             </div>
-            <button type="submit" id="submitBtn" disabled class="w-full p-5 rounded-2xl bg-amber-500 text-[#064e3b] font-black text-xl pulse-btn">تأكيد الحجز الآن 🚚</button>
+            
+            <button type="submit" id="submitBtn" disabled class="w-full p-5 rounded-2xl bg-amber-500 text-[#064e3b] font-black text-xl shadow-xl transition-all pulse-btn">تأكيد الحجز الآن 🚚</button>
           </form>
+          
+          <div class="mt-6 flex flex-col items-center gap-3">
+            <span class="text-sm text-emerald-300 opacity-70 italic">أو يمكنك الطلب مباشرة عبر:</span>
+            <a href="https://wa.me/9647710011031?text=اريد+طلب+هيمو+ماكس" 
+               onclick="if(typeof fbq !== 'undefined') { fbq('track', 'Contact'); }"
+               class="w-full p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center justify-center gap-2 transition-all border border-white/10">
+               💬 اطلب عبر واتساب
+            </a>
+          </div>
           <p id="statusMsg" class="mt-4 text-emerald-400 font-bold hidden">✅ تم استلام طلبك! سنتصل بك قريباً.</p>
         </div>
       </div>
@@ -50,27 +65,26 @@
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 py-20 border-t border-white/10">
-      <h2 class="text-3xl font-black text-center mb-12">ماذا يقول زبائننا؟ ❤️</h2>
+    <div class="max-w-6xl mx-auto px-6 py-16 border-t border-white/10">
+      <h2 class="text-3xl font-black text-center mb-12 italic tracking-tight">ماذا يقول زبائننا؟ ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="glass-effect p-6 rounded-3xl text-center">
           <div class="text-amber-400 mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="italic mb-4 text-sm">"من أول استخدام حسيت براحة كبيرة، التوصيل كان سريع والمنتج أصلي."</p>
+          <p class="italic mb-4 text-sm leading-relaxed">"من أول استخدام حسيت براحة كبيرة، التوصيل كان سريع والمنتج أصلي."</p>
           <span class="text-emerald-300 font-bold text-xs">- أبو مرتضى (بغداد)</span>
         </div>
         <div class="glass-effect p-6 rounded-3xl text-center border-amber-500/20">
           <div class="text-amber-400 mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="italic mb-4 text-sm">"شكراً هيمو ماكس، فعلاً خلصني من الألم بعد معاناة طويلة. أنصح به بشدة."</p>
+          <p class="italic mb-4 text-sm leading-relaxed">"شكراً هيمو ماكس، فعلاً خلصني من الألم بعد معاناة طويلة. أنصح به بشدة."</p>
           <span class="text-emerald-300 font-bold text-xs">- أم سارة (البصرة)</span>
         </div>
         <div class="glass-effect p-6 rounded-3xl text-center">
           <div class="text-amber-400 mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="italic mb-4 text-sm">"تعامل راقي جداً وسعر مناسب للنتيجة الجبارة. شكراً لكم."</p>
+          <p class="italic mb-4 text-sm leading-relaxed">"تعامل راقي جداً وسعر مناسب للنتيجة الجبارة. شكراً لكم."</p>
           <span class="text-emerald-300 font-bold text-xs">- محمد الساعدي (النجف)</span>
         </div>
       </div>
     </div>
-
   </div>
 
   <script>
@@ -78,7 +92,8 @@
     const phoneInput = document.getElementById('phone');
     const addressInput = document.getElementById('address');
     const quantityInput = document.getElementById('quantity');
-    const totalPriceSpan = document.getElementById('totalPrice');
+    const productPriceSpan = document.getElementById('productPrice');
+    const totalDisplaySpan = document.getElementById('totalDisplay');
     const submitBtn = document.getElementById('submitBtn');
     const form = document.getElementById('orderForm');
 
@@ -87,9 +102,14 @@
     const CHAT_ID = '-4898876332'; 
 
     function updatePrice() {
-      const total = (parseInt(quantityInput.value) * 15000) + 4000;
-      totalPriceSpan.innerText = total.toLocaleString();
-      submitBtn.disabled = !(nameInput.value && phoneInput.value && addressInput.value);
+      const qty = parseInt(quantityInput.value) || 1;
+      const productPrice = qty * 15000;
+      const total = productPrice + 4000;
+      
+      productPriceSpan.innerText = productPrice.toLocaleString();
+      totalDisplaySpan.innerText = total.toLocaleString();
+      
+      submitBtn.disabled = !(nameInput.value.trim() && phoneInput.value.trim() && addressInput.value.trim());
     }
 
     [nameInput, phoneInput, addressInput, quantityInput].forEach(el => el.addEventListener('input', updatePrice));
@@ -99,21 +119,33 @@
       submitBtn.disabled = true;
       submitBtn.innerText = 'جاري الحجز...';
 
-      const message = `📦 *طلب جديد* 📦\n👤 *الاسم:* ${nameInput.value}\n📞 *الهاتف:* ${phoneInput.value}\n📍 *العنوان:* ${addressInput.value}\n🔢 *الكمية:* ${quantityInput.value}\n💰 *المبلغ:* ${totalPriceSpan.innerText} د.ع`;
+      const message = `📦 *طلب حجز جديد من الموقع* 📦\n\n` +
+                      `👤 *الاسم:* ${nameInput.value}\n` +
+                      `📞 *الهاتف:* ${phoneInput.value}\n` +
+                      `📍 *العنوان:* ${addressInput.value}\n` +
+                      `🔢 *الكمية:* ${quantityInput.value}\n` +
+                      `💰 *المجموع:* ${totalDisplaySpan.innerText} د.ع\n` +
+                      `🚚 (شامل التوصيل 4,000)`;
 
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
-      });
+      try {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+        });
 
-      // إرسال حدث Lead لفيسبوك بكسل
-      if(typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
-      
-      document.getElementById('statusMsg').classList.remove('hidden');
-      submitBtn.innerText = 'تم الإرسال ✅';
-      form.reset();
-      updatePrice();
+        // إرسال حدث Lead لفيسبوك بكسل
+        if(typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+        
+        document.getElementById('statusMsg').classList.remove('hidden');
+        submitBtn.innerText = 'تم الإرسال ✅';
+        form.reset();
+        updatePrice();
+      } catch (err) {
+        alert('حدث خطأ، يرجى المحاولة لاحقاً');
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'تأكيد الحجز الآن 🚚';
+      }
     };
   </script>
  </body>
