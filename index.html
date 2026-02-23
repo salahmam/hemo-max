@@ -36,18 +36,18 @@
       <div class="flex-1 w-full max-w-lg">
         <div class="video-container shadow-2xl border-4 border-white/10">
           <iframe 
-            src="https://www.youtube.com/embed/Y2ikUM_qYWs?autoplay=0&mute=0&controls=1&modestbranding=1&rel=0" 
+            src="https://www.youtube.com/embed/Y2ikUM_qYWs?controls=1&modestbranding=1&rel=0&autoplay=0&mute=0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
           </iframe>
         </div>
-        <p class="text-center text-xs mt-2 text-emerald-200 italic">اضغط تشغيل لسماع شرح الدكتور بالصوت 🔊</p>
+        <p class="text-center text-xs mt-2 text-emerald-200 italic font-bold">🔊 اضغط لتشغيل صوت د. جودة محمد عواد</p>
       </div>
     </div>
 
     <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
         <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
-            <h2 class="text-2xl font-black text-amber-400 mb-4 italic text-balance">💎 خصائص هيمو ماكس:</h2>
+            <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
             <ul class="text-base space-y-3 text-emerald-50 italic">
                 <li>• معالجة كافة درجات البواسير دون ألم إطلاقاً.</li>
                 <li>• الضمان بعدم الرجوع ثانيةً بإذن الله.</li>
@@ -56,8 +56,8 @@
             </ul>
         </div>
         <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
-            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic text-balance">🧬 تقنية الاقتلاع من الجذور:</h2>
-            <p class="text-base leading-relaxed text-emerald-50 italic text-balance">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذه التقنية تضمن الشفاء التام بإذن الله وتختلف عن المسكنات المؤقتة.</p>
+            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع من الجذور:</h2>
+            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذه التقنية تضمن الشفاء التام بإذن الله وتختلف عن المسكنات المؤقتة.</p>
         </div>
     </div>
 
@@ -81,9 +81,18 @@
     <div class="max-w-6xl mx-auto px-6 py-10 text-center">
       <h2 class="text-3xl font-black mb-12 italic text-amber-400">آراء زبائننا ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-effect p-8 rounded-3xl border-white/10 italic text-sm text-balance">"المنتج فعال جداً والتوصيل سريع، ارتحت عليه من أول يوم."</div>
-        <div class="glass-effect p-8 rounded-3xl border-amber-500/30 transform scale-105 bg-white/5 italic text-sm text-balance">"أفضل علاج جربته، يغنيك عن العمليات والجراحة تماماً."</div>
-        <div class="glass-effect p-8 rounded-3xl border-white/10 italic text-sm text-balance">"تعامل راقي ومنتج أصلي، شكراً للمصداقية."</div>
+        <div class="glass-effect p-8 rounded-3xl border-white/10 italic">
+          <div class="text-amber-400 text-xl mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="text-sm text-emerald-50">"المنتج فعال جداً والتوصيل سريع، ارتحت عليه من أول يوم."</p>
+        </div>
+        <div class="glass-effect p-8 rounded-3xl border-amber-500/30 transform scale-105 bg-white/5 italic">
+          <div class="text-amber-400 text-xl mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="text-sm text-emerald-50">"أفضل علاج جربته، يغنيك عن العمليات والجراحة تماماً."</p>
+        </div>
+        <div class="glass-effect p-8 rounded-3xl border-white/10 italic">
+          <div class="text-amber-400 text-xl mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="text-sm text-emerald-50">"تعامل راقي ومنتج أصلي، شكراً للمصداقية."</p>
+        </div>
       </div>
     </div>
 
@@ -121,7 +130,7 @@
     const ID = '-4898876332';
 
     // منع القفز عند التحميل
-    window.onload = () => { if(window.location.hash) window.scrollTo(0,0); };
+    window.onload = () => { if(window.location.hash) { window.history.replaceState('', document.title, window.location.pathname); window.scrollTo(0,0); } };
 
     function up() {
       const total = (parseInt(q.value) * 15000) + 4000;
