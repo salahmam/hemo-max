@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>هيمو ماكس - الحل النهائي للبواسير</title>
   
-  <script src="pixels.js"></script>
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '924158442835773'); // تم وضع رقم البكسل الخاص بك هنا
+    fbq('track', 'PageView');
+  </script>
+  
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
   
@@ -15,13 +27,9 @@
     .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
     .pulse-btn { animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
-    
-    /* تنسيق الفيديو لمنع النقر على الروابط الخارجية */
     .video-wrapper { position: relative; border-radius: 20px; overflow: hidden; border: 4px solid rgba(255, 255, 255, 0.1); }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-    
-    /* طبقة شفافة تمنع النقر على شعار القناة واسمها */
     .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 60px; z-index: 10; cursor: default; }
     .video-overlay-bottom { position: absolute; bottom: 0; right: 0; width: 100px; height: 50px; z-index: 10; cursor: default; }
   </style>
@@ -35,14 +43,16 @@
         <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight italic">تخلص من آلام <br><span class="text-amber-400">البواسير نهائياً!</span></h1>
         
         <div class="flex flex-col items-center lg:items-start gap-4 mb-10">
-            <a href="https://wa.me/9647710011031" onclick="if(typeof fbq !== 'undefined') { fbq('track', 'Contact'); }" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب</a>
+            <a href="https://wa.me/9647710011031" onclick="fbq('track', 'Contact');" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب</a>
             <a href="#orderSection" class="w-full max-w-sm p-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-[#064e3b] font-black flex items-center justify-center gap-2 transition-all border-b-4 border-amber-700 pulse-btn text-xl shadow-2xl">🛒 اطلب الآن (ملء استمارة)</a>
         </div>
       </div>
 
       <div class="flex-1 w-full max-w-lg">
         <div class="video-wrapper shadow-2xl">
-          <div class="video-overlay"></div> <div class="video-overlay-bottom"></div> <div class="video-container">
+          <div class="video-overlay"></div>
+          <div class="video-overlay-bottom"></div>
+          <div class="video-container">
             <iframe 
               src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&autoplay=0&mute=0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -50,7 +60,7 @@
             </iframe>
           </div>
         </div>
-        <p class="text-center text-xs mt-3 text-emerald-200 italic font-bold">🔊 اضغط لتشغيل فيديو المنتج بالصوت</p>
+        <p class="text-center text-xs mt-3 text-emerald-200 italic font-bold">🔊 اضغط لتشغيل الفيديو وسماع الصوت</p>
       </div>
     </div>
 
@@ -58,15 +68,14 @@
         <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
             <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
             <ul class="text-base space-y-3 text-emerald-50 italic">
-                <li>• معالجة كافة درجات البواسير دون ألم إطلاقاً.</li>
+                <li>• معالجة كافة درجات البواسير دون ألم.</li>
                 <li>• الضمان بعدم الرجوع ثانيةً بإذن الله.</li>
                 <li>• لا تأثير على عضلات التحكم أو مزاولة العمل.</li>
-                <li>• تقنية عالية تضمن إزالة تامة للبواسير والشقوق.</li>
             </ul>
         </div>
         <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
-            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع من الجذور:</h2>
-            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذه التقنية تضمن الشفاء التام بإذن الله وتنهي أعراض الحكة والنزيف [00:00:37].</p>
+            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع:</h2>
+            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. شفاء تام ونهائي بإذن الله.</p>
         </div>
     </div>
 
@@ -93,7 +102,7 @@
 
     <div id="orderSection" class="max-w-4xl mx-auto px-6 py-20">
         <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl">
-          <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
+          <h3 class="text-3xl font-black text-center mb-8 italic text-white text-balance">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
           <form id="orderForm" class="space-y-4">
             <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none">
             <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none">
@@ -107,7 +116,7 @@
               <div class="flex flex-col justify-center">
                 <div class="text-sm italic">سعر المنتج: 15,000 د.ع</div>
                 <div class="text-sm text-amber-400 font-bold italic">التوصيل: + 4,000 د.ع</div>
-                <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
+                <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2 font-black">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
               </div>
             </div>
             
@@ -122,7 +131,6 @@
     const n = document.getElementById('name'), p = document.getElementById('phone'), a = document.getElementById('address'), q = document.getElementById('quantity'), t = document.getElementById('totalDisplay'), btn = document.getElementById('submitBtn'), f = document.getElementById('orderForm');
     const TOKEN = '8723279205:AAHGuUzyFM0vbo3FuMva2F_B7lgpeqDtofs', ID = '-4898876332';
 
-    // منع القفز عند التحميل
     window.onload = () => { if(window.location.hash) { window.history.replaceState('', document.title, window.location.pathname); window.scrollTo(0,0); } };
 
     function up() {
@@ -143,7 +151,10 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ chat_id: ID, text: msg })
         });
-        if(typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+        
+        // إرسال حدث التحويل للفيسبوك بكسل فوراً
+        fbq('track', 'Lead'); 
+        
         document.getElementById('statusMsg').classList.remove('hidden');
         btn.innerText = 'تم الإرسال بنجاح ✅';
         f.reset(); up();
