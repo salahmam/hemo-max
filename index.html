@@ -17,6 +17,7 @@
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .star-rating { color: #fbbf24; font-size: 1.25rem; }
   </style>
  </head>
  <body class="bg-[#064e3b] text-white overflow-x-hidden">
@@ -47,7 +48,7 @@
 
     <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
         <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
-            <h2 class="text-2xl font-black text-amber-400 mb-4 italic text-balance">💎 خصائص هيمو ماكس:</h2>
+            <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
             <ul class="text-base space-y-3 text-emerald-50 italic">
                 <li>• معالجة كافة درجات البواسير دون ألم إطلاقاً.</li>
                 <li>• الضمان بعدم الرجوع ثانيةً بإذن الله.</li>
@@ -56,8 +57,8 @@
             </ul>
         </div>
         <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
-            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic text-balance">🧬 تقنية الاقتلاع من الجذور:</h2>
-            <p class="text-base leading-relaxed text-emerald-50 italic text-balance">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذه التقنية تضمن الشفاء التام بإذن الله وتختلف عن المسكنات المؤقتة.</p>
+            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع من الجذور:</h2>
+            <p class="text-base leading-relaxed text-emerald-50 italic">تقتلع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. هذه التقنية تضمن الشفاء التام بإذن الله.</p>
         </div>
     </div>
 
@@ -74,22 +75,37 @@
                     <p class="text-sm italic leading-relaxed">إدخال كمية قليلة داخل فتحة الشرج باستخدام الأداة المخصصة.</p>
                 </div>
             </div>
-            <p class="text-center mt-8 text-amber-200 text-sm font-bold italic">💡 يستخدم 2-3 مرات يومياً لمدة أسبوع إلى أسبوعين.</p>
         </div>
     </div>
 
     <div class="max-w-6xl mx-auto px-6 py-10 text-center">
       <h2 class="text-3xl font-black mb-12 italic text-amber-400">آراء زبائننا ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-effect p-8 rounded-3xl border-white/10 italic text-sm text-balance">"المنتج فعال جداً والتوصيل سريع، ارتحت عليه من أول يوم."</div>
-        <div class="glass-effect p-8 rounded-3xl border-amber-500/30 transform scale-105 bg-white/5 italic text-sm text-balance">"أفضل علاج جربته، يغنيك عن العمليات والجراحة تماماً."</div>
-        <div class="glass-effect p-8 rounded-3xl border-white/10 italic text-sm text-balance">"تعامل راقي ومنتج أصلي، شكراً للمصداقية."</div>
+        
+        <div class="glass-effect p-8 rounded-3xl border-white/10 flex flex-col items-center">
+          <div class="star-rating mb-2">★★★★★</div>
+          <p class="italic text-sm text-balance">"المنتج فعال جداً والتوصيل سريع، ارتحت عليه من أول يوم."</p>
+          <span class="mt-4 text-xs font-bold text-emerald-300">أبو أحمد - بغداد</span>
+        </div>
+
+        <div class="glass-effect p-8 rounded-3xl border-amber-500/30 transform scale-105 bg-white/5 flex flex-col items-center">
+          <div class="star-rating mb-2">★★★★★</div>
+          <p class="italic text-sm text-balance">"أفضل علاج جربته، يغنيك عن العمليات والجراحة تماماً. شكراً للمصداقية."</p>
+          <span class="mt-4 text-xs font-bold text-amber-400">أم سارة - البصرة</span>
+        </div>
+
+        <div class="glass-effect p-8 rounded-3xl border-white/10 flex flex-col items-center">
+          <div class="star-rating mb-2">★★★★★</div>
+          <p class="italic text-sm text-balance">"تعامل راقي ومنتج أصلي 100%. أنصح كل شخص يعاني منه."</p>
+          <span class="mt-4 text-xs font-bold text-emerald-300">علي الرفاعي - النجف</span>
+        </div>
+
       </div>
     </div>
 
     <div id="orderSection" class="max-w-4xl mx-auto px-6 py-20">
         <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl">
-          <h3 class="text-3xl font-black text-center mb-8 italic text-white text-balance">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
+          <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
           <form id="orderForm" class="space-y-4">
             <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none">
             <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none">
@@ -103,7 +119,7 @@
               <div class="flex flex-col justify-center">
                 <div class="text-sm italic">سعر المنتج: 15,000 د.ع</div>
                 <div class="text-sm text-amber-400 font-bold italic">التوصيل: + 4,000 د.ع</div>
-                <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2 font-black">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
+                <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
               </div>
             </div>
             
@@ -116,9 +132,7 @@
 
   <script>
     const n = document.getElementById('name'), p = document.getElementById('phone'), a = document.getElementById('address'), q = document.getElementById('quantity'), t = document.getElementById('totalDisplay'), btn = document.getElementById('submitBtn'), f = document.getElementById('orderForm');
-    
-    const TOKEN = '8723279205:AAHGuUzyFM0vbo3FuMva2F_B7lgpeqDtofs';
-    const ID = '-4898876332';
+    const TOKEN = '8723279205:AAHGuUzyFM0vbo3FuMva2F_B7lgpeqDtofs', ID = '-4898876332';
 
     // منع القفز عند التحميل
     if (window.location.hash) {
@@ -136,7 +150,7 @@
     f.onsubmit = async (e) => {
       e.preventDefault();
       btn.disabled = true; btn.innerText = 'جاري الإرسال...';
-      const msg = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع\n🚚 (شامل التوصيل)`;
+      const msg = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع`;
       try {
         await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
           method: 'POST',
