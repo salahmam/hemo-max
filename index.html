@@ -24,17 +24,16 @@
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     
-    /* أنيميشن التحميل الجديد */
+    /* أنيميشن التحميل الجديد (Spinner) */
     .loader {
       border: 3px solid #064e3b;
       border-top: 3px solid transparent;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       animation: spin 1s linear infinite;
       display: inline-block;
-      margin-left: 10px;
-      vertical-align: middle;
+      margin-left: 12px;
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
@@ -43,8 +42,8 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4QCD34L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="gradient-bg min-h-screen">
-    <!-- الهيدر والفيديو (نفس الكود السابق) -->
-    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12 border-b border-white/5">
+    
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12 border-b border-white/5 text-right">
       <div class="flex-1 text-center lg:text-right">
         <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
             <div class="inline-block bg-amber-500 text-[#064e3b] px-4 py-1 rounded-full text-sm font-bold italic shadow-lg">⭐ منتج مضمون 100% وأصلي</div>
@@ -53,7 +52,7 @@
         <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight italic">تخلص من آلام <br><span class="text-amber-400">البواسير نهائياً!</span></h1>
         
         <div class="flex flex-col items-center lg:items-start gap-4 mb-10">
-            <a href="https://wa.me/9647710011031" id="whatsapp_btn" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب</a>
+            <a href="https://wa.me/9647710011031" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب</a>
             <a href="#orderSection" class="w-full max-w-sm p-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-[#064e3b] font-black flex items-center justify-center gap-2 transition-all border-b-4 border-amber-700 pulse-btn text-xl shadow-2xl">🛒 اطلب الآن (ملء استمارة)</a>
         </div>
       </div>
@@ -61,53 +60,14 @@
       <div class="flex-1 w-full max-w-lg">
         <div class="video-wrapper shadow-2xl">
           <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&autoplay=0&mute=0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" allowfullscreen></iframe>
           </div>
         </div>
-        <p class="text-center text-xs mt-3 text-emerald-200 italic font-bold">🔊 اضغط لتشغيل فيديو المنتج بالصوت</p>
       </div>
     </div>
 
-    <!-- الخصائص والآراء (نفس الكود السابق) -->
-    <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-        <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
-            <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
-            <ul class="text-base space-y-3 text-emerald-50 italic">
-                <li>• معالجة كافة درجات البواسير دون ألم أو جراحة.</li>
-                <li>• الضمان بعدم الرجوع ثانيةً لاحتوائه على تقنية الترميم.</li>
-                <li>• بديل آمن وفعال للعمليات الجراحية والكي.</li>
-                <li>• لا تأثير على عضلات التحكم ومزاولة العمل فوراً.</li>
-            </ul>
-        </div>
-        <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
-            <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع التركية:</h2>
-            <p class="text-base leading-relaxed text-emerald-50 italic">تعتمد تقنية "هيمو ماكس" على اقتلاع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد. يوفر شفاءً تاماً ونهائياً بعيداً عن الحلول المؤقتة.</p>
-        </div>
-    </div>
-
-    <!-- آراء الزبائن وطريقة الاستخدام (نفس الكود السابق) -->
-    <div class="max-w-6xl mx-auto px-6 py-10 text-center">
-      <h2 class="text-3xl font-black mb-12 italic text-amber-400">آراء زبائننا ❤️</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-effect p-8 rounded-3xl border-white/10 italic">
-          <p class="font-bold text-emerald-300 mb-1">أبو مرتضى - بغداد</p>
-          <div class="text-amber-400 text-lg mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="text-sm text-emerald-50">"المنتج فعال جداً والتوصيل سريع، ارتحت عليه من أول يوم."</p>
-        </div>
-        <div class="glass-effect p-8 rounded-3xl border-amber-500/30 transform scale-105 bg-white/5 italic">
-          <p class="font-bold text-emerald-300 mb-1">الحاج جاسم - البصرة</p>
-          <div class="text-amber-400 text-lg mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="text-sm text-emerald-50">"أفضل علاج جربته، يغنيك عن العمليات والجراحة تماماً."</p>
-        </div>
-        <div class="glass-effect p-8 rounded-3xl border-white/10 italic">
-          <p class="font-bold text-emerald-300 mb-1">أستاذ أحمد - أربيل</p>
-          <div class="text-amber-400 text-lg mb-2">⭐⭐⭐⭐⭐</div>
-          <p class="text-sm text-emerald-50">"تعامل راقي ومنتج أصلي ومصداقية تامة."</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="orderSection" class="max-w-4xl mx-auto px-6 py-10">
+    <!-- قسم الحجز المطور -->
+    <div id="orderSection" class="max-w-4xl mx-auto px-6 py-20">
         <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl text-right">
           <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
           <form id="orderForm" class="space-y-4">
@@ -128,10 +88,10 @@
             </div>
 
             <button type="submit" id="submitBtn" disabled class="w-full p-6 rounded-3xl bg-amber-500 text-[#064e3b] font-black text-2xl shadow-xl transition-all mt-6 border-b-4 border-amber-700 hover:scale-105 active:scale-95 flex items-center justify-center">
-              <span id="btnText">تأكيد الحجز النهائي</span>
+              <span id="btnContent">تأكيد الحجز النهائي</span>
             </button>
           </form>
-          <p id="statusMsg" class="mt-6 text-emerald-400 font-bold text-center text-xl hidden italic">✅ تم استلام طلبك! سنتصل بك قريباً.</p>
+          <p id="statusMsg" class="mt-6 text-emerald-400 font-bold text-center text-xl hidden italic">✅ تم استلام طلبك بنجاح! سنتصل بك قريباً.</p>
         </div>
     </div>
   </div>
@@ -143,9 +103,10 @@
           q = document.getElementById('quantity'), 
           t = document.getElementById('totalDisplay'), 
           btn = document.getElementById('submitBtn'), 
-          btnText = document.getElementById('btnText'),
+          btnContent = document.getElementById('btnContent'),
           f = document.getElementById('orderForm');
     
+    // الرابط الخاص بك من Google Apps Script
     const GAS_URL = 'https://script.google.com/macros/s/AKfycby1cEattkBz0RZp9K_RBsB8plrr_fx0wT6wTcp5DdtvAAix9yGM7pieNfBVgexiaaPtZg/exec';
 
     function up() {
@@ -159,30 +120,32 @@
     f.onsubmit = async (e) => {
       e.preventDefault();
       btn.disabled = true; 
-      // إضافة السبنر عند البدء
-      btnText.innerHTML = '<span class="loader"></span> جاري معالجة طلبك...';
+      
+      // إظهار السبنر عند البدء
+      btnContent.innerHTML = '<span class="loader"></span> جاري إرسال الطلب...';
 
       const message = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع`;
 
       try {
         await fetch(GAS_URL, {
           method: 'POST',
-          mode: 'no-cors',
+          mode: 'no-cors', // لتجاوز قيود المتصفح
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: message })
         });
         
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ 'event': 'form_submission', 'form_id': 'orderForm' });
+        // محاكاة استجابة جوجل لأن mode: no-cors لا يعيد بيانات
+        setTimeout(() => {
+            document.getElementById('statusMsg').classList.remove('hidden');
+            btnContent.innerText = 'تم الحجز بنجاح ✅';
+            f.reset(); 
+            up();
+        }, 1500);
 
-        document.getElementById('statusMsg').classList.remove('hidden');
-        btnText.innerText = 'تم الحجز بنجاح ✅';
-        f.reset(); 
-        up();
       } catch (err) { 
         alert('حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى'); 
         btn.disabled = false; 
-        btnText.innerText = 'تأكيد الحجز النهائي';
+        btnContent.innerText = 'تأكيد الحجز النهائي';
       }
     };
   </script>
