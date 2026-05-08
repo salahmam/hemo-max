@@ -23,13 +23,27 @@
     .video-wrapper { position: relative; border-radius: 20px; overflow: hidden; border: 4px solid rgba(255, 255, 255, 0.1); }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    
+    /* أنيميشن التحميل الجديد */
+    .loader {
+      border: 3px solid #064e3b;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
  </head>
  <body class="bg-[#064e3b] text-white overflow-x-hidden">
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4QCD34L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="gradient-bg min-h-screen">
-    
+    <!-- الهيدر والفيديو (نفس الكود السابق) -->
     <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12 border-b border-white/5">
       <div class="flex-1 text-center lg:text-right">
         <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
@@ -54,6 +68,7 @@
       </div>
     </div>
 
+    <!-- الخصائص والآراء (نفس الكود السابق) -->
     <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
         <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
             <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
@@ -70,6 +85,7 @@
         </div>
     </div>
 
+    <!-- آراء الزبائن وطريقة الاستخدام (نفس الكود السابق) -->
     <div class="max-w-6xl mx-auto px-6 py-10 text-center">
       <h2 class="text-3xl font-black mb-12 italic text-amber-400">آراء زبائننا ❤️</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -91,32 +107,14 @@
       </div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-6 py-10 text-right">
-        <div class="bg-white/5 p-8 rounded-[2rem] border-r-4 border-amber-500">
-            <h3 class="text-2xl font-black text-amber-400 mb-6 italic">📝 طريقة الاستخدام المثالية:</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-emerald-50 italic">
-                <div class="space-y-4 border-l border-white/10 pl-4">
-                    <p class="font-bold text-white">✅ الخطوات التحضيرية:</p>
-                    <p>1. يفضل غسل اليدين والمنطقة جيداً بالماء الدافئ قبل الاستخدام.</p>
-                    <p>2. تجفيف المنطقة المصابة برفق تام بمنديل قطني.</p>
-                </div>
-                <div class="space-y-4">
-                    <p class="font-bold text-white">✅ التطبيق (مرتين إلى 3 مرات يومياً):</p>
-                    <p>• <span class="text-amber-300">للحالات الخارجية:</span> دهن كمية قليلة وتوزيعها بلطف.</p>
-                    <p>• <span class="text-amber-300">للحالات الداخلية:</span> استخدام الأداة المرفقة لإدخال كمية بسيطة.</p>
-                </div>
-            </div>
-            <p class="mt-6 text-xs text-emerald-300 text-center font-bold font-italic">* استمر على المنتج لمدة أسبوع لضمان النتائج النهائية *</p>
-        </div>
-    </div>
-
     <div id="orderSection" class="max-w-4xl mx-auto px-6 py-10">
-        <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl">
+        <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl text-right">
           <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
           <form id="orderForm" class="space-y-4">
-            <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 transition-all">
-            <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 transition-all">
-            <input type="text" id="address" required placeholder="العنوان بالتفصيل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 transition-all">
+            <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 transition-all text-right">
+            <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 transition-all text-right">
+            <input type="text" id="address" required placeholder="العنوان بالتفصيل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 transition-all text-right">
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 p-6 bg-black/30 rounded-[2rem] border border-white/10 text-center">
               <div>
                 <label class="text-xs text-emerald-300 font-bold italic">الكمية:</label>
@@ -128,7 +126,10 @@
                 <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
               </div>
             </div>
-            <button type="submit" id="submitBtn" disabled class="w-full p-6 rounded-3xl bg-amber-500 text-[#064e3b] font-black text-2xl shadow-xl transition-all mt-6 border-b-4 border-amber-700 hover:scale-105 active:scale-95">تأكيد الحجز النهائي</button>
+
+            <button type="submit" id="submitBtn" disabled class="w-full p-6 rounded-3xl bg-amber-500 text-[#064e3b] font-black text-2xl shadow-xl transition-all mt-6 border-b-4 border-amber-700 hover:scale-105 active:scale-95 flex items-center justify-center">
+              <span id="btnText">تأكيد الحجز النهائي</span>
+            </button>
           </form>
           <p id="statusMsg" class="mt-6 text-emerald-400 font-bold text-center text-xl hidden italic">✅ تم استلام طلبك! سنتصل بك قريباً.</p>
         </div>
@@ -136,9 +137,15 @@
   </div>
 
   <script>
-    const n = document.getElementById('name'), p = document.getElementById('phone'), a = document.getElementById('address'), q = document.getElementById('quantity'), t = document.getElementById('totalDisplay'), btn = document.getElementById('submitBtn'), f = document.getElementById('orderForm');
+    const n = document.getElementById('name'), 
+          p = document.getElementById('phone'), 
+          a = document.getElementById('address'), 
+          q = document.getElementById('quantity'), 
+          t = document.getElementById('totalDisplay'), 
+          btn = document.getElementById('submitBtn'), 
+          btnText = document.getElementById('btnText'),
+          f = document.getElementById('orderForm');
     
-    // الرابط الجديد الخاص بك (Google Apps Script)
     const GAS_URL = 'https://script.google.com/macros/s/AKfycby1cEattkBz0RZp9K_RBsB8plrr_fx0wT6wTcp5DdtvAAix9yGM7pieNfBVgexiaaPtZg/exec';
 
     function up() {
@@ -152,15 +159,15 @@
     f.onsubmit = async (e) => {
       e.preventDefault();
       btn.disabled = true; 
-      btn.innerText = 'جاري الإرسال...';
+      // إضافة السبنر عند البدء
+      btnText.innerHTML = '<span class="loader"></span> جاري معالجة طلبك...';
 
       const message = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع`;
 
       try {
-        // الإرسال إلى رابط Google Apps Script
         await fetch(GAS_URL, {
           method: 'POST',
-          mode: 'no-cors', // لضمان العمل بدون مشاكل CORS في المتصفح
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: message })
         });
@@ -169,13 +176,13 @@
         window.dataLayer.push({ 'event': 'form_submission', 'form_id': 'orderForm' });
 
         document.getElementById('statusMsg').classList.remove('hidden');
-        btn.innerText = 'تم الإرسال بنجاح ✅';
+        btnText.innerText = 'تم الحجز بنجاح ✅';
         f.reset(); 
         up();
       } catch (err) { 
         alert('حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى'); 
         btn.disabled = false; 
-        btn.innerText = 'تأكيد الحجز النهائي';
+        btnText.innerText = 'تأكيد الحجز النهائي';
       }
     };
   </script>
