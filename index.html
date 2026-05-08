@@ -12,40 +12,55 @@
         .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
         .pulse-btn { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; border: 4px solid rgba(255, 255, 255, 0.1); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .loader { border: 3px solid #064e3b; border-top: 3px solid transparent; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; margin-left: 10px; vertical-align: middle; }
+        .loader { border: 3px solid #064e3b; border-top: 3px solid transparent; border-radius: 50%; width: 22px; height: 22px; animation: spin 1s linear infinite; display: inline-block; margin-left: 10px; vertical-align: middle; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="bg-[#064e3b] text-white">
+<body class="bg-[#064e3b] text-white overflow-x-hidden">
     <div class="gradient-bg min-h-screen">
         <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12 border-b border-white/5">
             <div class="flex-1 text-center lg:text-right">
                 <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
-                    <div class="inline-block bg-amber-500 text-[#064e3b] px-4 py-1 rounded-full text-sm font-bold italic shadow-lg">⭐ منتج مضمون 100%</div>
+                    <div class="inline-block bg-amber-500 text-[#064e3b] px-4 py-1 rounded-full text-sm font-bold italic shadow-lg">⭐ منتج مضمون 100% وأصلي</div>
                     <div class="inline-block bg-white text-[#064e3b] px-4 py-1 rounded-full text-sm font-bold italic shadow-lg">🇹🇷 صنع في تركيا</div>
                 </div>
                 <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight italic">تخلص من آلام <br><span class="text-amber-400">البواسير نهائياً!</span></h1>
                 <div class="flex flex-col items-center lg:items-start gap-4 mb-10">
-                    <a href="https://wa.me/9647710011031" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 text-white font-black flex items-center justify-center gap-2 border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب</a>
-                    <a href="#orderSection" class="w-full max-w-sm p-4 rounded-2xl bg-amber-500 text-[#064e3b] font-black flex items-center justify-center gap-2 border-b-4 border-amber-700 pulse-btn text-xl shadow-2xl">🛒 اطلب الآن (ملء استمارة)</a>
+                    <a href="https://wa.me/9647710011031" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب مباشر</a>
+                    <a href="#orderSection" class="w-full max-w-sm p-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-[#064e3b] font-black flex items-center justify-center gap-2 transition-all border-b-4 border-amber-700 pulse-btn text-xl shadow-2xl">🛒 اطلب الآن (ملء استمارة)</a>
                 </div>
             </div>
             <div class="flex-1 w-full max-w-lg">
-                <div class="video-container shadow-2xl border-4 border-white/10">
-                    <iframe src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1" allowfullscreen></iframe>
+                <div class="video-container shadow-2xl">
+                    <iframe src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
 
-        <div id="orderSection" class="max-w-4xl mx-auto px-6 py-20">
-            <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl">
-                <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز (دفع عند الاستلام) 🚚</h3>
-                <form id="orderForm" class="space-y-4 text-right">
+        <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
+            <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
+                <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
+                <ul class="text-base space-y-3 text-emerald-50 italic">
+                    <li>• معالجة كافة درجات البواسير دون ألم أو جراحة.</li>
+                    <li>• الضمان بعدم الرجوع لاحتوائه على تقنية الترميم.</li>
+                    <li>• لا تأثير على عضلات التحكم ومزاولة العمل فوراً.</li>
+                </ul>
+            </div>
+            <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
+                <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع التركية:</h2>
+                <p class="text-base leading-relaxed text-emerald-50 italic">تعتمد تقنية "هيمو ماكس" على اقتلاع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد ويوفر شفاءً تاماً.</p>
+            </div>
+        </div>
+
+        <div id="orderSection" class="max-w-4xl mx-auto px-6 py-10 pb-20">
+            <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl text-right">
+                <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز السريع 🚚</h3>
+                <form id="orderForm" class="space-y-4">
                     <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
                     <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
-                    <input type="text" id="address" required placeholder="العنوان بالتفصيل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
+                    <input type="text" id="address" required placeholder="العنوان بالتفصيل (المحافظة/المنطقة)" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 p-6 bg-black/30 rounded-[2rem] border border-white/10 text-center">
                         <div>
@@ -58,38 +73,61 @@
                             <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
                         </div>
                     </div>
-                    <button type="submit" id="submitBtn" disabled class="w-full p-6 rounded-3xl bg-amber-500 text-[#064e3b] font-black text-2xl shadow-xl transition-all mt-6 border-b-4 border-amber-700 hover:scale-105 flex items-center justify-center">
-                        <span id="btnText">تأكيد الحجز النهائي</span>
+
+                    <button type="submit" id="submitBtn" disabled class="w-full p-6 rounded-3xl bg-amber-500 text-[#064e3b] font-black text-2xl shadow-xl transition-all mt-6 border-b-4 border-amber-700 hover:scale-105 active:scale-95 flex items-center justify-center">
+                        <span id="btnText">تأكيد الحجز النهائي ✅</span>
                     </button>
                 </form>
-                <p id="statusMsg" class="mt-6 text-emerald-400 font-bold text-center text-xl hidden italic">✅ تم استلام طلبك! سنتصل بك قريباً.</p>
+                <p id="statusMsg" class="mt-6 text-emerald-400 font-bold text-center text-xl hidden italic">✅ تم استلام طلبك! سيفتح واتساب الآن للتأكيد...</p>
             </div>
         </div>
     </div>
 
     <script>
-        const n=document.getElementById('name'),p=document.getElementById('phone'),a=document.getElementById('address'),q=document.getElementById('quantity'),t=document.getElementById('totalDisplay'),btn=document.getElementById('submitBtn'),btxt=document.getElementById('btnText'),f=document.getElementById('orderForm');
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycby1cEattkBz0RZp9K_RBsB8plrr_fx0wT6wTcp5DdtvAAix9yGM7pieNfBVgexiaaPtZg/exec';
+        const n=document.getElementById('name'), p=document.getElementById('phone'), a=document.getElementById('address'), q=document.getElementById('quantity'), t=document.getElementById('totalDisplay'), btn=document.getElementById('submitBtn'), btxt=document.getElementById('btnText'), f=document.getElementById('orderForm');
+        
+        // معلوماتك
+        const MY_PHONE = "9647710011031"; 
+        const GAS_URL = "https://script.google.com/macros/s/AKfycby1cEattkBz0RZp9K_RBsB8plrr_fx0wT6wTcp5DdtvAAix9yGM7pieNfBVgexiaaPtZg/exec";
 
-        function up(){
-            t.innerText=((parseInt(q.value)*15000)+4000).toLocaleString();
-            btn.disabled=!(n.value.trim()&&p.value.trim()&&a.value.trim());
+        function up() {
+            const total = (parseInt(q.value) * 15000) + 4000;
+            t.innerText = total.toLocaleString();
+            btn.disabled = !(n.value.trim() && p.value.trim() && a.value.trim());
         }
-        [n,p,a,q].forEach(el=>el.addEventListener('input',up));
+        [n, p, a, q].forEach(el => el.addEventListener('input', up));
 
-        f.onsubmit=async(e)=>{
+        f.onsubmit = async (e) => {
             e.preventDefault();
-            btn.disabled=true;
-            btxt.innerHTML='<span class="loader"></span> جاري الإرسال...';
-            const msg=`📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع`;
-            try{
-                await fetch(GAS_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({text:msg})});
+            btn.disabled = true;
+            btxt.innerHTML = '<span class="loader"></span> جاري معالجة طلبك...';
+
+            const summary = `📦 *طلب جديد من الموقع*\n\n👤 *الاسم:* ${n.value}\n📞 *الهاتف:* ${p.value}\n📍 *العنوان:* ${a.value}\n🔢 *الكمية:* ${q.value}\n💰 *المجموع:* ${t.innerText} د.ع`;
+
+            try {
+                // 1. الإرسال إلى جوجل (تليجرام في الخلفية)
+                fetch(GAS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({ text: summary })
+                });
+
+                // 2. إظهار رسالة نجاح بسيطة
                 document.getElementById('statusMsg').classList.remove('hidden');
-                btxt.innerText='تم الحجز بنجاح ✅';
-                f.reset();up();
-            }catch(err){
-                alert('خطأ في الإرسال');
-                btn.disabled=false;btxt.innerText='تأكيد الحجز النهائي';
+                
+                // 3. فتح واتساب الزبون برسالة جاهزة بعد ثانية واحدة
+                setTimeout(() => {
+                    const waUrl = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(summary)}`;
+                    window.location.href = waUrl;
+                    
+                    btxt.innerText = 'تم الإرسال بنجاح ✅';
+                    f.reset(); up();
+                }, 1200);
+
+            } catch (err) {
+                alert('حدث خطأ، حاول مجدداً');
+                btn.disabled = false;
+                btxt.innerText = 'تأكيد الحجز النهائي ✅';
             }
         };
     </script>
