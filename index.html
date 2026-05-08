@@ -137,7 +137,9 @@
 
   <script>
     const n = document.getElementById('name'), p = document.getElementById('phone'), a = document.getElementById('address'), q = document.getElementById('quantity'), t = document.getElementById('totalDisplay'), btn = document.getElementById('submitBtn'), f = document.getElementById('orderForm');
-    const TOKEN = '8723279205:AAHGuUzyFM0vbo3FuMva2F_B7lgpeqDtofs', ID = '-4898876332';
+    
+    // الرابط الجديد الخاص بك (Google Apps Script)
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycby1cEattkBz0RZp9K_RBsB8plrr_fx0wT6wTcp5DdtvAAix9yGM7pieNfBVgexiaaPtZg/exec';
 
     function up() {
       const total = (parseInt(q.value) * 15000) + 4000;
@@ -149,12 +151,18 @@
 
     f.onsubmit = async (e) => {
       e.preventDefault();
-      btn.disabled = true; btn.innerText = 'جاري الإرسال...';
+      btn.disabled = true; 
+      btn.innerText = 'جاري الإرسال...';
+
+      const message = `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع`;
+
       try {
-        await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        // الإرسال إلى رابط Google Apps Script
+        await fetch(GAS_URL, {
           method: 'POST',
+          mode: 'no-cors', // لضمان العمل بدون مشاكل CORS في المتصفح
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: ID, text: `📦 طلب جديد\n👤 الاسم: ${n.value}\n📞 الهاتف: ${p.value}\n📍 العنوان: ${a.value}\n🔢 الكمية: ${q.value}\n💰 المجموع: ${t.innerText} د.ع` })
+          body: JSON.stringify({ text: message })
         });
         
         window.dataLayer = window.dataLayer || [];
@@ -162,8 +170,13 @@
 
         document.getElementById('statusMsg').classList.remove('hidden');
         btn.innerText = 'تم الإرسال بنجاح ✅';
-        f.reset(); up();
-      } catch (err) { alert('خطأ في الإرسال'); btn.disabled = false; }
+        f.reset(); 
+        up();
+      } catch (err) { 
+        alert('حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى'); 
+        btn.disabled = false; 
+        btn.innerText = 'تأكيد الحجز النهائي';
+      }
     };
   </script>
  </body>
