@@ -1,135 +1,317 @@
-<!doctype html>
-<html lang="ar" dir="rtl" class="h-full">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هيمو ماكس - الحل النهائي للبواسير</title>
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        * { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
-        .gradient-bg { background: linear-gradient(135deg, #0d9488 0%, #065f46 50%, #064e3b 100%); }
-        .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .pulse-btn { animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; border: 4px solid rgba(255, 255, 255, 0.1); }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .loader { border: 3px solid #064e3b; border-top: 3px solid transparent; border-radius: 50%; width: 22px; height: 22px; animation: spin 1s linear infinite; display: inline-block; margin-left: 10px; vertical-align: middle; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة حجز وتفصيل أزياء التخرج</title>
+  <style>
+    :root {
+      --primary: #185ADB;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 16px;
+      margin: 0;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    h1 { font-size: 20px; text-align: center; margin-bottom: 8px; }
+    p.subtitle { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 24px; }
+    .section-title {
+      font-weight: bold;
+      font-size: 15px;
+      margin: 20px 0 10px 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+      color: var(--primary);
+    }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; margin-top: 12px; }
+    input[type="text"], input[type="tel"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background: #fff;
+    }
+    .row { display: flex; gap: 12px; }
+    .col { flex: 1; }
+    
+    /* مربعات الألوان */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .color-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .color-card input { display: none; }
+    .color-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+      transition: all 0.2s;
+    }
+    .color-card input:checked + .color-box {
+      border-color: #000;
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+    .color-name { font-size: 11px; margin-top: 4px; text-align: center; color: #475569; }
+
+    /* الإضافات */
+    .addon-card {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .addon-header { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .addon-input { margin-top: 10px; display: none; }
+
+    /* المجموع وزر الإرسال */
+    .total-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #1e40af;
+    }
+    button.submit-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body class="bg-[#064e3b] text-white overflow-x-hidden">
-    <div class="gradient-bg min-h-screen">
-        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12 border-b border-white/5">
-            <div class="flex-1 text-center lg:text-right">
-                <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
-                    <div class="inline-block bg-amber-500 text-[#064e3b] px-4 py-1 rounded-full text-sm font-bold italic shadow-lg">⭐ منتج مضمون 100% وأصلي</div>
-                    <div class="inline-block bg-white text-[#064e3b] px-4 py-1 rounded-full text-sm font-bold italic shadow-lg">🇹🇷 صنع في تركيا</div>
-                </div>
-                <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight italic">تخلص من آلام <br><span class="text-amber-400">البواسير نهائياً!</span></h1>
-                <div class="flex flex-col items-center lg:items-start gap-4 mb-10">
-                    <a href="https://wa.me/9647710011031" class="w-full max-w-sm p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all border-b-4 border-emerald-800 text-xl shadow-2xl">💬 اطلب عبر واتساب مباشر</a>
-                    <a href="#orderSection" class="w-full max-w-sm p-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-[#064e3b] font-black flex items-center justify-center gap-2 transition-all border-b-4 border-amber-700 pulse-btn text-xl shadow-2xl">🛒 اطلب الآن (ملء استمارة)</a>
-                </div>
-            </div>
-            <div class="flex-1 w-full max-w-lg">
-                <div class="video-container shadow-2xl">
-                    <iframe src="https://www.youtube.com/embed/tlWNBYfn-94?controls=1&modestbranding=1" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
+<body>
 
-        <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-            <div class="glass-effect p-8 rounded-3xl border-amber-500/20">
-                <h2 class="text-2xl font-black text-amber-400 mb-4 italic">💎 خصائص هيمو ماكس:</h2>
-                <ul class="text-base space-y-3 text-emerald-50 italic">
-                    <li>• معالجة كافة درجات البواسير دون ألم أو جراحة.</li>
-                    <li>• الضمان بعدم الرجوع لاحتوائه على تقنية الترميم.</li>
-                    <li>• لا تأثير على عضلات التحكم ومزاولة العمل فوراً.</li>
-                </ul>
-            </div>
-            <div class="glass-effect p-8 rounded-3xl border-emerald-500/20">
-                <h2 class="text-2xl font-black text-emerald-400 mb-4 italic">🧬 تقنية الاقتلاع التركية:</h2>
-                <p class="text-base leading-relaxed text-emerald-50 italic">تعتمد تقنية "هيمو ماكس" على اقتلاع البواسير من جذورها وبكل قنواتها، مما يمنع عودتها للنمو من جديد ويوفر شفاءً تاماً.</p>
-            </div>
-        </div>
+<div class="form-container">
+  <h1>🎓 استمارة حجز وتفصيل أزياء التخرج</h1>
+  <p class="subtitle">المعمل يفصل المقاس خصيصاً لك بناءً على الطول والوزن لضمان المظهر المثالي</p>
 
-        <div id="orderSection" class="max-w-4xl mx-auto px-6 py-10 pb-20">
-            <div class="glass-effect p-10 rounded-[3rem] border-white/20 shadow-2xl text-right">
-                <h3 class="text-3xl font-black text-center mb-8 italic text-white">استمارة الحجز السريع 🚚</h3>
-                <form id="orderForm" class="space-y-4">
-                    <input type="text" id="name" required placeholder="الاسم الكامل" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
-                    <input type="tel" id="phone" required placeholder="رقم الهاتف" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
-                    <input type="text" id="address" required placeholder="العنوان بالتفصيل (المحافظة/المنطقة)" class="w-full p-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500 text-right">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 p-6 bg-black/30 rounded-[2rem] border border-white/10 text-center">
-                        <div>
-                            <label class="text-xs text-emerald-300 font-bold italic">الكمية:</label>
-                            <input type="number" id="quantity" value="1" min="1" class="w-full p-4 rounded-xl bg-emerald-900 border border-emerald-500 text-white text-center font-black text-2xl">
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <div class="text-sm italic">سعر المنتج: 15,000 د.ع</div>
-                            <div class="text-sm text-amber-400 font-bold italic">التوصيل: + 4,000 د.ع</div>
-                            <div class="text-2xl font-black mt-2 text-white border-t border-white/20 pt-2">المجموع: <span id="totalDisplay">19,000</span> د.ع</div>
-                        </div>
-                    </div>
+  <form id="orderForm">
+    <!-- المعلومات الأساسية -->
+    <div class="section-title">1. المعلومات الشخصية</div>
+    <label>الاسم الثلاثي للطالب/ـة *</label>
+    <input type="text" id="clientName" required placeholder="اكتب اسمك الثلاثي">
 
-                    <button type="submit" id="submitBtn" disabled class="w-full p-6 rounded-3xl bg-amber-500 text-[#064e3b] font-black text-2xl shadow-xl transition-all mt-6 border-b-4 border-amber-700 hover:scale-105 active:scale-95 flex items-center justify-center">
-                        <span id="btnText">تأكيد الحجز النهائي ✅</span>
-                    </button>
-                </form>
-                <p id="statusMsg" class="mt-6 text-emerald-400 font-bold text-center text-xl hidden italic">✅ تم استلام طلبك! سيفتح واتساب الآن للتأكيد...</p>
-            </div>
-        </div>
+    <label>رقم الهاتف (الواتساب) *</label>
+    <input type="tel" id="clientPhone" required placeholder="مثال: 0770xxxxxxx">
+
+    <label>المحافظة والعنوان بالتفصيل *</label>
+    <input type="text" id="clientCity" required placeholder="مثال: الموصل / حي الزهور">
+
+    <label>الجامعة والكلية / القسم *</label>
+    <input type="text" id="clientUniv" required placeholder="مثال: جامعة الموصل - هندسة مدني">
+
+    <!-- القياسات -->
+    <div class="section-title">2. القياسات (المعمل يحدد القياس الأنسب)</div>
+    <div class="row">
+      <div class="col">
+        <label>الطول (سم) *</label>
+        <input type="number" id="height" required placeholder="مثال: 175">
+      </div>
+      <div class="col">
+        <label>الوزن (كغم) *</label>
+        <input type="number" id="weight" required placeholder="مثال: 72">
+      </div>
     </div>
 
-    <script>
-        const n=document.getElementById('name'), p=document.getElementById('phone'), a=document.getElementById('address'), q=document.getElementById('quantity'), t=document.getElementById('totalDisplay'), btn=document.getElementById('submitBtn'), btxt=document.getElementById('btnText'), f=document.getElementById('orderForm');
-        
-        // معلوماتك
-        const MY_PHONE = "9647710011031"; 
-        const GAS_URL = "https://script.google.com/macros/s/AKfycby1cEattkBz0RZp9K_RBsB8plrr_fx0wT6wTcp5DdtvAAix9yGM7pieNfBVgexiaaPtZg/exec";
+    <!-- الباقة -->
+    <div class="section-title">3. اختيار الباقة الأساسية</div>
+    <label>الموديل المطلوب *</label>
+    <select id="packageSelect" onchange="calculateTotal()">
+      <option value="80000" data-name="مكس ملكي كامل (وشاح + قبعة + ظهر + روب)">مكس ملكي كامل — 80,000 د.ع</option>
+      <option value="80000" data-name="روب أمريكي كامل (وشاح + قبعة + مثلث + روب)">روب أمريكي كامل — 80,000 د.ع</option>
+      <option value="75000" data-name="روب ملكي كامل (وشاح + قبعة + روب)">روب ملكي كامل — 75,000 د.ع</option>
+      <option value="70000" data-name="مكس جانبي">مكس جانبي — 70,000 د.ع</option>
+      <option value="70000" data-name="روب كلاسيكي عادي (روب + وشاح + قبعة)">روب كلاسيكي عادي — 70,000 د.ع</option>
+      <option value="65000" data-name="تفصيل روب ملكي فقط">تفصيل روب ملكي فقط — 65,000 د.ع</option>
+      <option value="60000" data-name="تفصيل روب عادي فقط">تفصيل روب عادي فقط — 60,000 د.ع</option>
+      <option value="35000" data-name="روب تفصيل بسيط منفرد">روب تفصيل بسيط منفرد — 35,000 د.ع</option>
+      <option value="25000" data-name="وشاح ملكي منفرد">وشاح ملكي منفرد — 25,000 د.ع</option>
+      <option value="20000" data-name="قبعة ملكية منفردة">قبعة ملكية منفردة — 20,000 د.ع</option>
+      <option value="15000" data-name="وشاح عادي منفرد">وشاح عادي منفرد — 15,000 د.ع</option>
+      <option value="10000" data-name="مثلث أمريكي منفرد">مثلث أمريكي منفرد — 10,000 د.ع</option>
+    </select>
 
-        function up() {
-            const total = (parseInt(q.value) * 15000) + 4000;
-            t.innerText = total.toLocaleString();
-            btn.disabled = !(n.value.trim() && p.value.trim() && a.value.trim());
-        }
-        [n, p, a, q].forEach(el => el.addEventListener('input', up));
+    <!-- الألوان -->
+    <div class="section-title">4. لون قماش الوشاح والتطعيمات (اختر بالضغط على المربع)</div>
+    <div class="color-grid">
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="ماروني / خمري" checked>
+        <span class="color-box" style="background:#6B1D2F;"></span>
+        <span class="color-name">ماروني</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أزرق ملكي">
+        <span class="color-box" style="background:#185ADB;"></span>
+        <span class="color-name">أزرق ملكي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="كحلي / نيلي">
+        <span class="color-box" style="background:#1B2A4A;"></span>
+        <span class="color-name">كحلي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أخضر نفطي">
+        <span class="color-box" style="background:#1C4436;"></span>
+        <span class="color-name">أخضر نفطي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="زيتي عسكري">
+        <span class="color-box" style="background:#3F4A3C;"></span>
+        <span class="color-name">زيتي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="سمائي">
+        <span class="color-box" style="background:#4A90E2;"></span>
+        <span class="color-name">سمائي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="باذنجاني داكن">
+        <span class="color-box" style="background:#432344;"></span>
+        <span class="color-name">باذنجاني</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="وردي مغبر">
+        <span class="color-box" style="background:#A46877;"></span>
+        <span class="color-name">وردي مغبر</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="لافندر فاتح">
+        <span class="color-box" style="background:#A89BB9;"></span>
+        <span class="color-name">لافندر</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="عسلي / جملي">
+        <span class="color-box" style="background:#A8652B;"></span>
+        <span class="color-name">عسلي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أوف وايت / سكري">
+        <span class="color-box" style="background:#E5DDD1;"></span>
+        <span class="color-name">أوف وايت</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أبيض ناصع">
+        <span class="color-box" style="background:#F8F9FA;"></span>
+        <span class="color-name">أبيض</span>
+      </label>
+    </div>
 
-        f.onsubmit = async (e) => {
-            e.preventDefault();
-            btn.disabled = true;
-            btxt.innerHTML = '<span class="loader"></span> جاري معالجة طلبك...';
+    <!-- التطريز الأساسي -->
+    <div class="section-title">5. التطريزات الأساسية (مشمولة بالبكج)</div>
+    <label>تطريز الوشاح - يمين (الاسم والتخصص)</label>
+    <input type="text" id="embRight" placeholder="مثال: أحمد علي - هندسة نفط">
 
-            const summary = `📦 *طلب جديد من الموقع*\n\n👤 *الاسم:* ${n.value}\n📞 *الهاتف:* ${p.value}\n📍 *العنوان:* ${a.value}\n🔢 *الكمية:* ${q.value}\n💰 *المجموع:* ${t.innerText} د.ع`;
+    <label>تطريز الوشاح - يسار (العبارة أو الدفعة)</label>
+    <input type="text" id="embLeft" placeholder="مثال: مهندس نفط 2026">
 
-            try {
-                // 1. الإرسال إلى جوجل (تليجرام في الخلفية)
-                fetch(GAS_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: JSON.stringify({ text: summary })
-                });
+    <label>تطريز ظهر الروب</label>
+    <input type="text" id="embBack" placeholder="مثال: Petroleum Engineering">
 
-                // 2. إظهار رسالة نجاح بسيطة
-                document.getElementById('statusMsg').classList.remove('hidden');
-                
-                // 3. فتح واتساب الزبون برسالة جاهزة بعد ثانية واحدة
-                setTimeout(() => {
-                    const waUrl = `https://wa.me/${MY_PHONE}?text=${encodeURIComponent(summary)}`;
-                    window.location.href = waUrl;
-                    
-                    btxt.innerText = 'تم الإرسال بنجاح ✅';
-                    f.reset(); up();
-                }, 1200);
+    <label>تطريز القبعة</label>
+    <input type="text" id="embCap" placeholder="مثال: 2026">
 
-            } catch (err) {
-                alert('حدث خطأ، حاول مجدداً');
-                btn.disabled = false;
-                btxt.innerText = 'تأكيد الحجز النهائي ✅';
-            }
-        };
-    </script>
+    <!-- الإضافات الاختيارية -->
+    <div class="section-title">6. الإضافات الاختيارية الخاصة (تضاف على الحساب)</div>
+    
+    <div class="addon-card">
+      <div class="addon-header">
+        <input type="checkbox" id="addSleeveR" onchange="toggleAddon('sleeveRInput', 5000, this)">
+        <span>تطريز ردن (كم) الروب - اليمين (+5,000 د.ع)</span>
+      </div>
+      <div class="addon-input" id="sleeveRInput">
+        <input type="text" id="sleeveRText" placeholder="اكتب ما ترغب بتطريزه على الكم الأيمن">
+      </div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-header">
+        <input type="checkbox" id="addSleeveL" onchange="toggleAddon('sleeveLInput', 5000, this)">
+        <span>تطريز ردن (كم) الروب - اليسار (+5,000 د.ع)</span>
+      </div>
+      <div class="addon-input" id="sleeveLInput">
+        <input type="text" id="sleeveLText" placeholder="اكتب ما ترغب بتطريزه على الكم الأيسر">
+      </div>
+    </div>
+
+    <div class="addon-card">
+      <div class="addon-header">
+        <input type="checkbox" id="addLace" onchange="toggleAddon(null, 10000, this)">
+        <span>إضافة دانتيل فاخر على الوشاح (+10,000 د.ع)</span>
+      </div>
+    </div>
+
+    <!-- المجموع -->
+    <div class="total-box">
+      <span>المجموع الإجمالي المستحق:</span>
+      <span id="totalDisplay">80,000 د.ع</span>
+    </div>
+
+    <button type="button" class="submit-btn" onclick="submitOrder()">تأكيد وإرسال الطلب</button>
+  </form>
+</div>
+
+<script>
+  let addonTotal = 0;
+
+  function toggleAddon(inputId, price, checkbox) {
+    if (inputId) {
+      document.getElementById(inputId).style.display = checkbox.checked ? 'block' : 'none';
+    }
+    calculateTotal();
+  }
+
+  function calculateTotal() {
+    const basePrice = parseInt(document.getElementById('packageSelect').value);
+    let extra = 0;
+    if (document.getElementById('addSleeveR').checked) extra += 5000;
+    if (document.getElementById('addSleeveL').checked) extra += 5000;
+    if (document.getElementById('addLace').checked) extra += 10000;
+
+    const total = basePrice + extra;
+    document.getElementById('totalDisplay').innerText = total.toLocaleString() + " د.ع";
+  }
+
+  function submitOrder() {
+    alert("تم تسجيل الطلب بنجاح! سيتم تحويل التفاصيل إلى معمل الخياطة.");
+  }
+</script>
+
 </body>
 </html>
