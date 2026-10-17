@@ -1,118 +1,317 @@
-استمارة حجز وتفصيل أزياء التخرج 🎓
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة حجز وتفصيل أزياء التخرج</title>
+  <style>
+    :root {
+      --primary: #185ADB;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 16px;
+      margin: 0;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    h1 { font-size: 20px; text-align: center; margin-bottom: 8px; }
+    p.subtitle { text-align: center; color: #64748b; font-size: 13px; margin-bottom: 24px; }
+    .section-title {
+      font-weight: bold;
+      font-size: 15px;
+      margin: 20px 0 10px 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+      color: var(--primary);
+    }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; margin-top: 12px; }
+    input[type="text"], input[type="tel"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background: #fff;
+    }
+    .row { display: flex; gap: 12px; }
+    .col { flex: 1; }
+    
+    /* مربعات الألوان */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .color-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .color-card input { display: none; }
+    .color-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+      transition: all 0.2s;
+    }
+    .color-card input:checked + .color-box {
+      border-color: #000;
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+    .color-name { font-size: 11px; margin-top: 4px; text-align: center; color: #475569; }
 
-أهلاً بك! يرجى ملء البيانات التالية بدقة. التفصيل يتم خصيصاً لك داخل معملنا بناءً على قياسات الطول والوزن لضمان المقاس والمظهر الأنسب.
+    /* الإضافات */
+    .addon-card {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .addon-header { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .addon-input { margin-top: 10px; display: none; }
 
----
+    /* المجموع وزر الإرسال */
+    .total-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #1e40af;
+    }
+    button.submit-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
 
-الاسم الثلاثي للطالب/ـة *
-اكتب اسمك الثلاثي بدقة
+<div class="form-container">
+  <h1>🎓 استمارة حجز وتفصيل أزياء التخرج</h1>
+  <p class="subtitle">المعمل يفصل المقاس خصيصاً لك بناءً على الطول والوزن لضمان المظهر المثالي</p>
 
-رقم الهاتف (الواتساب فعال) *
-مثال: 0770xxxxxxx
+  <form id="orderForm">
+    <!-- المعلومات الأساسية -->
+    <div class="section-title">1. المعلومات الشخصية</div>
+    <label>الاسم الثلاثي للطالب/ـة *</label>
+    <input type="text" id="clientName" required placeholder="اكتب اسمك الثلاثي">
 
-المحافظة والعنوان بالتفصيل *
-مثال: الموصل / حي الزهور - قرب جامع...
+    <label>رقم الهاتف (الواتساب) *</label>
+    <input type="tel" id="clientPhone" required placeholder="مثال: 0770xxxxxxx">
 
-الجامعة / الكلية والقسم *
-مثال: جامعة الموصل - كلية الهندسة / قسم المدني
+    <label>المحافظة والعنوان بالتفصيل *</label>
+    <input type="text" id="clientCity" required placeholder="مثال: الموصل / حي الزهور">
 
----
+    <label>الجامعة والكلية / القسم *</label>
+    <input type="text" id="clientUniv" required placeholder="مثال: جامعة الموصل - هندسة مدني">
 
-بيانات القياس (المعمل يحدد القياس الأنسب)
+    <!-- القياسات -->
+    <div class="section-title">2. القياسات (المعمل يحدد القياس الأنسب)</div>
+    <div class="row">
+      <div class="col">
+        <label>الطول (سم) *</label>
+        <input type="number" id="height" required placeholder="مثال: 175">
+      </div>
+      <div class="col">
+        <label>الوزن (كغم) *</label>
+        <input type="number" id="weight" required placeholder="مثال: 72">
+      </div>
+    </div>
 
-الطول بالسنتيمتر (سم) *
-مثال: 175
+    <!-- الباقة -->
+    <div class="section-title">3. اختيار الباقة الأساسية</div>
+    <label>الموديل المطلوب *</label>
+    <select id="packageSelect" onchange="calculateTotal()">
+      <option value="80000" data-name="مكس ملكي كامل (وشاح + قبعة + ظهر + روب)">مكس ملكي كامل — 80,000 د.ع</option>
+      <option value="80000" data-name="روب أمريكي كامل (وشاح + قبعة + مثلث + روب)">روب أمريكي كامل — 80,000 د.ع</option>
+      <option value="75000" data-name="روب ملكي كامل (وشاح + قبعة + روب)">روب ملكي كامل — 75,000 د.ع</option>
+      <option value="70000" data-name="مكس جانبي">مكس جانبي — 70,000 د.ع</option>
+      <option value="70000" data-name="روب كلاسيكي عادي (روب + وشاح + قبعة)">روب كلاسيكي عادي — 70,000 د.ع</option>
+      <option value="65000" data-name="تفصيل روب ملكي فقط">تفصيل روب ملكي فقط — 65,000 د.ع</option>
+      <option value="60000" data-name="تفصيل روب عادي فقط">تفصيل روب عادي فقط — 60,000 د.ع</option>
+      <option value="35000" data-name="روب تفصيل بسيط منفرد">روب تفصيل بسيط منفرد — 35,000 د.ع</option>
+      <option value="25000" data-name="وشاح ملكي منفرد">وشاح ملكي منفرد — 25,000 د.ع</option>
+      <option value="20000" data-name="قبعة ملكية منفردة">قبعة ملكية منفردة — 20,000 د.ع</option>
+      <option value="15000" data-name="وشاح عادي منفرد">وشاح عادي منفرد — 15,000 د.ع</option>
+      <option value="10000" data-name="مثلث أمريكي منفرد">مثلث أمريكي منفرد — 10,000 د.ع</option>
+    </select>
 
-الوزن بالكيلوغرام (كغم) *
-مثال: 72
+    <!-- الألوان -->
+    <div class="section-title">4. لون قماش الوشاح والتطعيمات (اختر بالضغط على المربع)</div>
+    <div class="color-grid">
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="ماروني / خمري" checked>
+        <span class="color-box" style="background:#6B1D2F;"></span>
+        <span class="color-name">ماروني</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أزرق ملكي">
+        <span class="color-box" style="background:#185ADB;"></span>
+        <span class="color-name">أزرق ملكي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="كحلي / نيلي">
+        <span class="color-box" style="background:#1B2A4A;"></span>
+        <span class="color-name">كحلي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أخضر نفطي">
+        <span class="color-box" style="background:#1C4436;"></span>
+        <span class="color-name">أخضر نفطي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="زيتي عسكري">
+        <span class="color-box" style="background:#3F4A3C;"></span>
+        <span class="color-name">زيتي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="سمائي">
+        <span class="color-box" style="background:#4A90E2;"></span>
+        <span class="color-name">سمائي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="باذنجاني داكن">
+        <span class="color-box" style="background:#432344;"></span>
+        <span class="color-name">باذنجاني</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="وردي مغبر">
+        <span class="color-box" style="background:#A46877;"></span>
+        <span class="color-name">وردي مغبر</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="لافندر فاتح">
+        <span class="color-box" style="background:#A89BB9;"></span>
+        <span class="color-name">لافندر</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="عسلي / جملي">
+        <span class="color-box" style="background:#A8652B;"></span>
+        <span class="color-name">عسلي</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أوف وايت / سكري">
+        <span class="color-box" style="background:#E5DDD1;"></span>
+        <span class="color-name">أوف وايت</span>
+      </label>
+      <label class="color-card">
+        <input type="radio" name="scarfColor" value="أبيض ناصع">
+        <span class="color-box" style="background:#F8F9FA;"></span>
+        <span class="color-name">أبيض</span>
+      </label>
+    </div>
 
----
+    <!-- التطريز الأساسي -->
+    <div class="section-title">5. التطريزات الأساسية (مشمولة بالبكج)</div>
+    <label>تطريز الوشاح - يمين (الاسم والتخصص)</label>
+    <input type="text" id="embRight" placeholder="مثال: أحمد علي - هندسة نفط">
 
-اختر باقة أو موديل التخرج المطلوب *
-- مكس ملكي كامل (وشاح + قبعة + ظهر + روب + تطريزات أساسية) — 80,000 د.ع
-- روب أمريكي كامل (وشاح + قبعة + مثلث أمريكي + روب + تطريز ظهر) — 80,000 د.ع
-- روب ملكي كامل (وشاح + قبعة + روب + تطريز ظهر) — 75,000 د.ع
-- مكس جانبي — 70,000 د.ع
-- روب كلاسيكي عادي (روب + وشاح + قبعة بدون تطريز ظهر) — 70,000 د.ع
-- تفصيل روب ملكي فقط — 65,000 د.ع
-- تفصيل روب عادي فقط — 60,000 د.ع
-- روب تفصيل بسيط منفرد — 35,000 د.ع
-- وشاح ملكي منفرد — 25,000 د.ع
-- قبعة ملكية منفردة — 20,000 د.ع
-- وشاح عادي منفرد — 15,000 د.ع
-- مثلث أمريكي منفرد — 10,000 د.ع
+    <label>تطريز الوشاح - يسار (العبارة أو الدفعة)</label>
+    <input type="text" id="embLeft" placeholder="مثال: مهندس نفط 2026">
 
----
+    <label>تطريز ظهر الروب</label>
+    <input type="text" id="embBack" placeholder="مثال: Petroleum Engineering">
 
-لون قماش الروب الأساسي *
-- أسود ملكي (الافتراضي الرسمي)
-- كحلي / نيلي داكن
-- أبيض ناصع
-- ماروني / خمري
-- زيتي عسكري
-- لون آخر (اكتبه في الملاحظات بالأسفل)
+    <label>تطريز القبعة</label>
+    <input type="text" id="embCap" placeholder="مثال: 2026">
 
-لون قماش الوشاح والتطعيمات *
-- أسود ملكي
-- كحلي / نيلي داكن
-- أزرق ملكي
-- سمائي
-- ماروني / خمري
-- أحمر كلاسيك
-- أخضر نفطي / زمردي
-- زيتي عسكري
-- بنفسجي باذنجاني
-- لافندر هادئ
-- وردي مغبر (Dusty Rose)
-- عسلي / جملي
-- خاكي / ترابي
-- بني شوكولا
-- بيج / حنطاوي
-- أوف وايت / سكري
-- أبيض ناصع
-- رصاصي فضي
-- رصاصي متوسط
+    <!-- الإضافات الاختيارية -->
+    <div class="section-title">6. الإضافات الاختيارية الخاصة (تضاف على الحساب)</div>
+    
+    <div class="addon-card">
+      <div class="addon-header">
+        <input type="checkbox" id="addSleeveR" onchange="toggleAddon('sleeveRInput', 5000, this)">
+        <span>تطريز ردن (كم) الروب - اليمين (+5,000 د.ع)</span>
+      </div>
+      <div class="addon-input" id="sleeveRInput">
+        <input type="text" id="sleeveRText" placeholder="اكتب ما ترغب بتطريزه على الكم الأيمن">
+      </div>
+    </div>
 
----
+    <div class="addon-card">
+      <div class="addon-header">
+        <input type="checkbox" id="addSleeveL" onchange="toggleAddon('sleeveLInput', 5000, this)">
+        <span>تطريز ردن (كم) الروب - اليسار (+5,000 د.ع)</span>
+      </div>
+      <div class="addon-input" id="sleeveLInput">
+        <input type="text" id="sleeveLText" placeholder="اكتب ما ترغب بتطريزه على الكم الأيسر">
+      </div>
+    </div>
 
-التطريزات الأساسية (مشمولة مجاناً بالبكج)
+    <div class="addon-card">
+      <div class="addon-header">
+        <input type="checkbox" id="addLace" onchange="toggleAddon(null, 10000, this)">
+        <span>إضافة دانتيل فاخر على الوشاح (+10,000 د.ع)</span>
+      </div>
+    </div>
 
-تطريز الوشاح - جهة اليمين (الاسم / التخصص)
-اكتب الاسم والتخصص المطلوب
+    <!-- المجموع -->
+    <div class="total-box">
+      <span>المجموع الإجمالي المستحق:</span>
+      <span id="totalDisplay">80,000 د.ع</span>
+    </div>
 
-شعار الوشاح - جهة اليمين (إن وجد)
-ارفع صورة واضحة للشعار
+    <button type="button" class="submit-btn" onclick="submitOrder()">تأكيد وإرسال الطلب</button>
+  </form>
+</div>
 
-تطريز الوشاح - جهة اليسار (العبارة / القسم)
-اكتب العبارة أو القسم المطلوب
+<script>
+  let addonTotal = 0;
 
-شعار الوشاح - جهة اليسار (إن وجد)
-ارفع صورة واضحة للشعار
+  function toggleAddon(inputId, price, checkbox) {
+    if (inputId) {
+      document.getElementById(inputId).style.display = checkbox.checked ? 'block' : 'none';
+    }
+    calculateTotal();
+  }
 
-تطريز ظهر الروب
-مثال: كلية التمريض 2026 أو اسم الجامعة
+  function calculateTotal() {
+    const basePrice = parseInt(document.getElementById('packageSelect').value);
+    let extra = 0;
+    if (document.getElementById('addSleeveR').checked) extra += 5000;
+    if (document.getElementById('addSleeveL').checked) extra += 5000;
+    if (document.getElementById('addLace').checked) extra += 10000;
 
-تطريز القبعة
-مثال: 2026 أو الحرف الأول
+    const total = basePrice + extra;
+    document.getElementById('totalDisplay').innerText = total.toLocaleString() + " د.ع";
+  }
 
----
+  function submitOrder() {
+    alert("تم تسجيل الطلب بنجاح! سيتم تحويل التفاصيل إلى معمل الخياطة.");
+  }
+</script>
 
-الإضافات الاختيارية الخاصة (تضاف على الحساب)
-
-هل ترغب بإضافة لمسات إضافية خاصة؟
-- تطريز ردن (كم) الروب - اليمين (+5,000 د.ع)
-- تطريز ردن (كم) الروب - اليسار (+5,000 د.ع)
-- إضافة دانتيل فاخر على الوشاح (+10,000 د.ع)
-
-تطريز الردن الأيمن (إذا اخترت الإضافة أعلاه)
-اكتب النص المطلوب تطريزه على الكم الأيمن
-
-تطريز الردن الأيسر (إذا اخترت الإضافة أعلاه)
-اكتب النص المطلوب تطريزه على الكم الأيسر
-
----
-
-ملاحظات خاصة للمعمل (اختياري)
-أي تفصيل أو تعديل إضافي ترغب بتوضيحه للخياط
-
-تنبيه: يرجى مراجعة الأسماء والإملاء بدقة؛ التطريز يتم آلياً طبقاً لما تم إدخاله في هذه الاستمارة. بعد إرسال الطلب، سيتواصل معك فريق المعمل لتأكيد التفاصيل وموعد التجهيز.
+</body>
+</html>
