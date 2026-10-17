@@ -1323,17 +1323,34 @@
   </form>
 </div>
 
-<!-- نافذة ملخص الطلب (Modal) -->
+<!-- نافذة ملخص الطلب (Modal)
+<!-- نافذة ملخص الطلب (Modal) مع زري التأكيد والتعديل -->
 <div class="modal-overlay" id="summaryModal">
   <div class="modal-box">
-    <div class="modal-title">🎉 تم تجهيز فاتورة طلبك بنجاح!</div>
+    <div class="modal-title" id="modalHeaderTitle">📋 مراجعة وتأكيد تفاصيل الطلب</div>
     <div class="summary-content" id="orderSummaryText"></div>
-    <button class="close-btn" onclick="closeModal()">حسناً، إغلاق</button>
+    
+    <!-- أزرار التحكم (تعديل الطلب أو تأكيد الإرسال) -->
+    <div id="modalActionButtons" style="display: flex; gap: 10px;">
+      <button type="button" class="close-btn" style="background: #64748b; flex: 1;" onclick="closeModal()">✏️ تعديل الطلب</button>
+      <button type="button" id="confirmSendBtn" class="close-btn" style="background: #16a34a; flex: 1.4;" onclick="confirmAndSendDirectToTelegram()">✅ تأكيد الإرسال النهائي</button>
+    </div>
+
+    <!-- زر الإغلاق بعد نجاح الإرسال -->
+    <button type="button" id="finalCloseBtn" class="close-btn" style="display: none; margin-top: 10px;" onclick="resetAfterSuccess()">تم (إغلاق النافذة)</button>
   </div>
 </div>
 
 <script>
   const DELIVERY_FEE = 5000;
+
+  // ==========================================================
+  // ⬇️ ضع توكن البوت ومعرف المحادثة (Chat ID) هنا فقط ⬇️
+  // ==========================================================
+  const TELEGRAM_TOKEN = "8723279205:AAHGuUzyFM0vbo3FuMva2F_B7lgpeqDtofs"; 
+  const CHAT_ID = "143914927"; 
+
+  let currentSummaryText = "";
 
   // تغيير لون الخلفية والثيم بالكامل عند اختيار لون الوشاح
   function changeThemeColor(radioEl) {
@@ -1341,7 +1358,6 @@
     const colorName = radioEl.value;
     document.documentElement.style.setProperty('--theme-color', hex);
     
-    // تحويل HEX إلى RGBA للإضاءة الخلفية
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
     const b = parseInt(hex.slice(5, 7), 16);
@@ -1369,14 +1385,11 @@
     }
   }
 
-  // تفعيل أو تضليل (تعطيل) حقول التطريز حسب ما اختاره الزبون من البكج أو القطع المنفردة
+  // تفعيل أو تضليل (تعطيل) حقول التطريز حسب ما اختاره الزبون
   function handleSelectionChange() {
     const checkedItems = document.querySelectorAll('input[name="itemSelect"]:checked');
 
-    let hasRobe = false;
-    let hasScarf = false;
-    let hasCap = false;
-    let hasBack = false;
+    let hasRobe = false, hasScarf = false, hasCap = false, hasBack = false;
 
     checkedItems.forEach(item => {
       if (item.getAttribute('data-robe') === 'true') hasRobe = true;
@@ -1385,14 +1398,8 @@
       if (item.getAttribute('data-back') === 'true') hasBack = true;
     });
 
-    const capabilities = {
-      robe: hasRobe,
-      scarf: hasScarf,
-      cap: hasCap,
-      back: hasBack
-    };
+    const capabilities = { robe: hasRobe, scarf: hasScarf, cap: hasCap, back: hasBack };
 
-    // فحص جميع البطاقات المشروطة
     document.querySelectorAll('.interactive-card[data-requires]').forEach(card => {
       const req = card.getAttribute('data-requires');
       const chk = card.querySelector('input[type="checkbox"]');
@@ -1432,14 +1439,13 @@
     const priceEl = document.getElementById('totalPriceText');
     priceEl.innerText = finalTotal.toLocaleString('en-US') + ' د.ع';
 
-    // أنيميشن نبض السعر عند التغيير
     priceEl.classList.add('price-bump');
     setTimeout(() => priceEl.classList.remove('price-bump'), 220);
 
     return finalTotal;
   }
 
-  // معالجة إرسال النموذج
+  // فتح نافذة المراجعة عند الضغط على زر الإرسال
   function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -1455,6 +1461,7 @@
     const univ = document.getElementById('studentUniv').value;
     const height = document.getElementById('heightCm').value;
     const weight = document.getElementById('weightKg').value;
+    const notes = document.getElementById('generalNotes').value;
 
     let selectedNames = [];
     checkedItems.forEach(item => selectedNames.push(item.getAttribute('data-title')));
@@ -1507,19 +1514,91 @@
     }
     if (!hasAddons) details += `- لا توجد إضافات خارجية\n`;
 
+    if (notes) details += `\n📝 ملاحظات: ${notes}\n`;
+
     const total = updatePrice();
     details += `\n🚚 أجور التوصيل: 5,000 د.ع`;
     details += `\n💰 المبلغ الإجمالي النهائي: ${total.toLocaleString('en-US')} د.ع`;
 
+    currentSummaryText = details;
+
+    document.getElementById('modalHeaderTitle').innerText = '📋 مراجعة وتأكيد تفاصيل الطلب';
     document.getElementById('orderSummaryText').innerText = details;
+    document.getElementById('modalActionButtons').style.display = 'flex';
+    document.getElementById('finalCloseBtn').style.display = 'none';
     document.getElementById('summaryModal').style.display = 'flex';
+  }
+
+  // إرسال ملف أو صورة مباشرة إلى تيليجرام
+  async function sendFileToTelegram(fileInput, captionLabel, studentName) {
+    if (!fileInput || !fileInput.files || fileInput.files.length === 0) return;
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append('chat_id', CHAT_ID);
+    formData.append('document', file);
+    formData.append('caption', `📎 مرفق (${captionLabel}) — للطالب: ${studentName}`);
+
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendDocument`, {
+      method: 'POST',
+      body: formData
+    });
+  }
+
+  // إرسال النص والصور مباشرة إلى تيليجرام بدون كوكل شيت
+  async function confirmAndSendDirectToTelegram() {
+    const confirmBtn = document.getElementById('confirmSendBtn');
+    confirmBtn.disabled = true;
+    confirmBtn.innerText = '⏳ جاري الإرسال إلى المعمل...';
+
+    const studentName = document.getElementById('studentName').value;
+
+    try {
+      // 1. إرسال رسالة تفاصيل الطلب النصية
+      const messageText = `🎓 <b>طلب تفصيل جديد — قمورة | QAMOURA</b>\n\n` + currentSummaryText;
+      
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: messageText,
+          parse_mode: 'HTML'
+        })
+      });
+
+      // 2. إرسال أي شعارات أو صور مرفقة مباشرة كملفات تحت الرسالة
+      if (document.getElementById('chk_scarfR').checked) await sendFileToTelegram(document.getElementById('file_scarfR'), 'شعار وشاح يمين', studentName);
+      if (document.getElementById('chk_scarfL').checked) await sendFileToTelegram(document.getElementById('file_scarfL'), 'شعار وشاح يسار', studentName);
+      if (document.getElementById('chk_back').checked)   await sendFileToTelegram(document.getElementById('file_back'), 'تصميم ظهر الروب', studentName);
+      if (document.getElementById('chk_cap').checked)    await sendFileToTelegram(document.getElementById('file_cap'), 'شعار القبعة', studentName);
+      if (document.getElementById('chk_sleeveR').checked) await sendFileToTelegram(document.getElementById('file_sleeveR'), 'نقشة ردن يمين', studentName);
+      if (document.getElementById('chk_sleeveL').checked) await sendFileToTelegram(document.getElementById('file_sleeveL'), 'نقشة ردن يسار', studentName);
+      if (document.getElementById('chk_extra').checked)   await sendFileToTelegram(document.getElementById('file_extra'), 'توضيح إضافة خاصة', studentName);
+
+      // 3. إظهار رسالة النجاح للزبون
+      document.getElementById('modalHeaderTitle').innerText = '🎉 تم إرسال طلبك بنجاح إلى المعمل!';
+      document.getElementById('orderSummaryText').innerText = currentSummaryText + '\n\n✅ تم استلام طلبك في المعمل بنجاح! يُرجى أخذ لقطة شاشة (Screenshot) لهذه الفاتورة للاحتفاظ بها.';
+      document.getElementById('modalActionButtons').style.display = 'none';
+      document.getElementById('finalCloseBtn').style.display = 'block';
+
+    } catch (error) {
+      alert("⚠️ تعذر الاتصال بالإنترنت، يرجى التأكد من الشبكة والمحاولة مرة أخرى.");
+    } finally {
+      confirmBtn.disabled = false;
+      confirmBtn.innerText = '✅ تأكيد الإرسال النهائي';
+    }
   }
 
   function closeModal() {
     document.getElementById('summaryModal').style.display = 'none';
   }
 
-  // تهيئة الحالة عند فتح الصفحة
+  function resetAfterSuccess() {
+    document.getElementById('summaryModal').style.display = 'none';
+    document.getElementById('gradForm').reset();
+    handleSelectionChange();
+  }
+
   window.onload = handleSelectionChange;
 </script>
 
