@@ -4,19 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>استمارة تفصيل أزياء التخرج الملكية</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0f172a;
-      --accent: #b48a3e;
-      --accent-light: #fef9c3;
-      --blue: #185ADB;
-      --bg: #f1f5f9;
+      --accent: #d4af37; /* ذهبي ملكي */
+      --blue: #2563eb;
+      --bg: #f8fafc;
       --card: #ffffff;
       --text: #1e293b;
       --muted: #64748b;
       --border: #e2e8f0;
-      --success: #16a34a;
+      --success: #10b981;
     }
 
     * {
@@ -30,7 +29,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      padding: 16px 12px 110px 12px;
+      padding: 12px 10px 130px 10px;
       line-height: 1.6;
     }
 
@@ -39,100 +38,85 @@
       margin: 0 auto;
     }
 
-    /* الهيدر */
+    /* الهيدر الاحترافي */
     .hero-header {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #fff;
-      padding: 28px 20px;
+      padding: 30px 20px;
       border-radius: 20px;
       text-align: center;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
       border-bottom: 4px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-header::after {
+      content: '🎓';
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.05;
+      right: -20px;
+      bottom: -30px;
+      transform: rotate(-15deg);
     }
 
     .hero-header h1 {
-      font-size: 24px;
-      font-weight: 800;
+      font-size: 26px;
+      font-weight: 900;
       margin-bottom: 8px;
-      color: #fff;
+      color: var(--accent);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .hero-header p {
-      font-size: 14px;
-      color: #cbd5e1;
+      font-size: 15px;
+      color: #e2e8f0;
+      font-weight: 500;
     }
 
-    /* البطاقات والأقسام */
+    /* البطاقات */
     .card-section {
       background: var(--card);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border-radius: 18px;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       border: 1px solid var(--border);
     }
 
     .section-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
       border-bottom: 2px solid #f1f5f9;
     }
 
     .step-badge {
       background: var(--primary);
       color: var(--accent);
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
+      font-weight: 900;
+      font-size: 16px;
     }
 
     .section-title {
-      font-size: 17px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 800;
       color: var(--primary);
     }
 
-    /* الحقول النصية */
+    /* الحقول النصية (مدمجة) */
     .form-group {
-      margin-bottom: 14px;
-    }
-
-    label.field-label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #334155;
-    }
-
-    input[type="text"],
-    input[type="tel"],
-    input[type="number"],
-    textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-size: 15px;
-      transition: all 0.2s ease;
-      background: #f8fafc;
-      color: var(--text);
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--blue);
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(24, 90, 219, 0.1);
+      margin-bottom: 16px;
     }
 
     .grid-2 {
@@ -141,26 +125,43 @@
       gap: 12px;
     }
 
-    .note-box {
-      background: #fffbeb;
-      border-right: 4px solid var(--accent);
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: #92400e;
-      margin-top: 8px;
+    label.field-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #334155;
     }
 
-    /* بطاقات اختيار الباقات */
+    input[type="text"], input[type="tel"], input[type="number"], textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background: #f8fafc;
+      font-weight: 500;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    /* خيارات البكجات والقطع (متعددة الخيارات Checkboxes) */
     .packages-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     .pkg-item {
       position: relative;
       cursor: pointer;
+      display: block;
     }
 
     .pkg-item input {
@@ -171,20 +172,39 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 16px;
+      padding: 16px;
       border: 2px solid var(--border);
-      border-radius: 12px;
-      background: #f8fafc;
-      transition: all 0.2s ease;
+      border-radius: 14px;
+      background: #fff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .pkg-info {
       display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pkg-icon {
+      font-size: 26px;
+      background: #f1f5f9;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .pkg-text {
+      display: flex;
       flex-direction: column;
+      gap: 4px;
     }
 
     .pkg-title {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 15px;
       color: var(--primary);
     }
@@ -192,23 +212,31 @@
     .pkg-desc {
       font-size: 12px;
       color: var(--muted);
+      font-weight: 500;
     }
 
     .pkg-price {
-      background: #e2e8f0;
+      background: #f1f5f9;
       color: var(--primary);
       padding: 6px 12px;
       border-radius: 8px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 14px;
       white-space: nowrap;
-      transition: all 0.2s;
+      transition: all 0.3s;
     }
 
     .pkg-item input:checked + .pkg-box {
       border-color: var(--blue);
       background: #eff6ff;
-      box-shadow: 0 4px 12px rgba(24, 90, 219, 0.1);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .pkg-item input:checked + .pkg-box .pkg-icon {
+      background: var(--blue);
+      color: #fff;
+      transform: scale(1.1);
     }
 
     .pkg-item input:checked + .pkg-box .pkg-price {
@@ -216,12 +244,12 @@
       color: #fff;
     }
 
-    /* شبكة مربعات الألوان */
+    /* شبكة الألوان */
     .color-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
       gap: 12px;
-      margin-top: 10px;
+      margin-bottom: 24px;
     }
 
     .color-option {
@@ -231,14 +259,12 @@
       cursor: pointer;
     }
 
-    .color-option input {
-      display: none;
-    }
+    .color-option input { display: none; }
 
     .swatch {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
       border: 2px solid #cbd5e1;
       position: relative;
       transition: all 0.2s ease;
@@ -246,9 +272,9 @@
     }
 
     .color-option input:checked + .swatch {
-      transform: scale(1.12);
+      transform: scale(1.15);
       border-color: var(--primary);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
 
     .color-option input:checked + .swatch::after {
@@ -259,40 +285,39 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-weight: bold;
-      font-size: 20px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+      font-weight: 900;
+      font-size: 22px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
     }
 
     .color-label {
       font-size: 11px;
-      font-weight: 700;
-      margin-top: 6px;
+      font-weight: 800;
+      margin-top: 8px;
       text-align: center;
-      color: #334155;
+      color: #475569;
     }
 
-    /* الخيارات التفاعلية (صح -> فتح المربع أسفله) */
+    /* بطاقات التطريز المدمجة (مجاني + مدفوع) */
     .interactive-card {
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
+      border: 2px solid var(--border);
+      border-radius: 14px;
       margin-bottom: 12px;
-      background: #f8fafc;
+      background: #fff;
       overflow: hidden;
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
     }
 
     .interactive-card.active {
       border-color: var(--blue);
-      background: #ffffff;
-      box-shadow: 0 4px 15px rgba(24, 90, 219, 0.08);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
     }
 
     .check-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 16px;
+      padding: 16px;
       cursor: pointer;
       user-select: none;
     }
@@ -300,13 +325,13 @@
     .check-title-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .custom-checkbox {
-      width: 22px;
-      height: 22px;
-      border: 2px solid #94a3b8;
+      width: 24px;
+      height: 24px;
+      border: 2.5px solid #94a3b8;
       border-radius: 6px;
       display: flex;
       align-items: center;
@@ -324,8 +349,8 @@
     .custom-checkbox::after {
       content: "✓";
       color: #fff;
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 15px;
+      font-weight: 900;
       display: none;
     }
 
@@ -334,78 +359,63 @@
     }
 
     .item-name {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 15px;
       color: var(--primary);
     }
 
     .badge-tag {
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       padding: 4px 10px;
       border-radius: 20px;
     }
 
-    .badge-free {
-      background: #dcfce7;
-      color: #15803d;
-    }
-
-    .badge-paid {
-      background: #dbeafe;
-      color: #1d4ed8;
-    }
+    .badge-free { background: #dcfce7; color: #059669; }
+    .badge-paid { background: #fee2e2; color: #dc2626; }
 
     .expandable-body {
       display: none;
       padding: 0 16px 16px 16px;
-      border-top: 1px dashed var(--border);
-      margin-top: 4px;
-      padding-top: 12px;
-      animation: fadeIn 0.25s ease;
+      animation: fadeInDown 0.3s ease;
     }
 
     .interactive-card.active .expandable-body {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-6px); }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .file-upload-box {
-      margin-top: 10px;
-      background: #f1f5f9;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px dashed #94a3b8;
+      margin-top: 12px;
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1.5px dashed #94a3b8;
     }
 
     .file-upload-box label {
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       color: #475569;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
-    input[type="file"] {
-      font-size: 12px;
-      width: 100%;
-    }
-
-    /* الشريط السفلي العائم للحساب والإرسال */
+    /* الشريط السفلي العائم للحساب */
     .sticky-footer {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       border-top: 1px solid var(--border);
-      padding: 12px 16px;
-      box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.08);
+      padding: 16px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
       z-index: 999;
     }
 
@@ -426,39 +436,52 @@
     .total-label {
       font-size: 12px;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 800;
+      margin-bottom: 2px;
     }
 
     .total-amount {
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 900;
       color: var(--primary);
     }
 
+    .delivery-note {
+      font-size: 11px;
+      color: #dc2626;
+      font-weight: 700;
+      background: #fee2e2;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
     .submit-btn {
-      background: linear-gradient(135deg, #185ADB 0%, #1d4ed8 100%);
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
       color: #fff;
       border: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 800;
+      padding: 16px 28px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(24, 90, 219, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
       flex: 1;
       max-width: 260px;
     }
 
     .submit-btn:active {
-      transform: scale(0.98);
+      transform: scale(0.96);
     }
 
-    /* نافذة ملخص الطلب (Modal) */
+    /* نافذة ملخص الطلب */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -468,41 +491,44 @@
 
     .modal-box {
       background: #fff;
-      border-radius: 20px;
+      border-radius: 24px;
       max-width: 500px;
       width: 100%;
-      padding: 24px;
+      padding: 28px;
       max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
     }
 
     .modal-title {
-      font-size: 19px;
-      font-weight: 800;
+      font-size: 20px;
+      font-weight: 900;
       color: var(--success);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       text-align: center;
     }
 
     .summary-content {
       background: #f8fafc;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 16px;
+      border-radius: 14px;
       font-size: 14px;
       white-space: pre-line;
-      border: 1px solid var(--border);
-      margin-bottom: 16px;
+      border: 2px solid var(--border);
+      margin-bottom: 20px;
+      font-weight: 600;
+      line-height: 1.8;
     }
 
     .close-btn {
       width: 100%;
-      padding: 12px;
+      padding: 16px;
       background: var(--primary);
       color: #fff;
       border: none;
-      border-radius: 10px;
-      font-weight: 700;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 16px;
       cursor: pointer;
     }
   </style>
@@ -510,23 +536,23 @@
 <body>
 
 <div class="container">
-  <!-- ترويسة الصفحة -->
+  
   <div class="hero-header">
-    <h1>🎓 معمل أزياء التخرج الملكية</h1>
-    <p>تفصيل خاص وعصري بدقة عالية حسب قياساتك الشخصية</p>
+    <h1>معمل أزياء التخرج الملكية</h1>
+    <p>تفصيل حصري واحترافي بأعلى معايير الجودة</p>
   </div>
 
   <form id="gradForm" onsubmit="handleFormSubmit(event)">
 
-    <!-- القسم 1: بيانات الطالب -->
+    <!-- القسم 1: المعلومات والقياسات (مدمجة) -->
     <div class="card-section">
       <div class="section-header">
         <span class="step-badge">1</span>
-        <span class="section-title">المعلومات الشخصية والعنوان</span>
+        <span class="section-title">المعلومات الشخصية والقياسات</span>
       </div>
 
       <div class="form-group">
-        <label class="field-label">الاسم الثلاثي للطالب / الطالبة *</label>
+        <label class="field-label">الاسم الثلاثي للطالب/ـة *</label>
         <input type="text" id="studentName" required placeholder="اكتب اسمك الثلاثي بدقة">
       </div>
 
@@ -545,165 +571,137 @@
         <label class="field-label">الجامعة / الكلية والقسم *</label>
         <input type="text" id="studentUniv" required placeholder="مثال: جامعة الموصل - كلية الهندسة">
       </div>
-    </div>
 
-    <!-- القسم 2: القياسات -->
-    <div class="card-section">
-      <div class="section-header">
-        <span class="step-badge">2</span>
-        <span class="section-title">القياسات (تفصيل خاص بالمعمل)</span>
-      </div>
-
-      <div class="grid-2">
+      <div class="grid-2" style="margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
         <div class="form-group">
-          <label class="field-label">الطول (بالسنتيمتر) *</label>
+          <label class="field-label">الطول (سم) *</label>
           <input type="number" id="heightCm" required placeholder="مثال: 175" min="120" max="220">
         </div>
         <div class="form-group">
-          <label class="field-label">الوزن (بالكيلوغرام) *</label>
+          <label class="field-label">الوزن (كغم) *</label>
           <input type="number" id="weightKg" required placeholder="مثال: 70" min="35" max="180">
         </div>
       </div>
-      <div class="note-box">
-        📏 لا داعي لاختيار مقاس (S/M/L)؛ كادر المعمل يقوم بتفصيل القياس المضبوط لك بالاعتماد على الطول والوزن.
-      </div>
     </div>
 
-    <!-- القسم 3: اختيار الباقة أو القطعة -->
+    <!-- القسم 2: تحديد الطلب (بكجات أو قطع مفردة) -->
     <div class="card-section">
       <div class="section-header">
-        <span class="step-badge">3</span>
-        <span class="section-title">اختر الباقة أو الموديل المطلوب</span>
+        <span class="step-badge">2</span>
+        <span class="section-title">تحديد الطلب (باقات أو قطع)</span>
       </div>
+      <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px; font-weight: 700;">
+        يمكنك اختيار بكج كامل، أو تحديد قطع مفردة (مثلاً قبعة فقط، أو قبعة ووشاح):
+      </p>
 
       <div class="packages-grid">
+        <!-- البكجات -->
         <label class="pkg-item">
-          <input type="radio" name="package" value="80000" data-title="مكس ملكي كامل (روب + وشاح + قبعة + تطريز)" checked onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="80000" data-title="مكس ملكي كامل" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">مكس ملكي كامل (شامل التطريز)</span>
-              <span class="pkg-desc">روب + وشاح جهتين + قبعة + تطريز الظهر والوشاح والقبعة</span>
+              <div class="pkg-icon">👑</div>
+              <div class="pkg-text">
+                <span class="pkg-title">مكس ملكي كامل (شامل التطريز)</span>
+                <span class="pkg-desc">روب + وشاح جهتين + قبعة + تطريز كامل</span>
+              </div>
             </div>
             <span class="pkg-price">80,000 د.ع</span>
           </div>
         </label>
 
         <label class="pkg-item">
-          <input type="radio" name="package" value="80000" data-title="روب أمريكي كامل VIP" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="80000" data-title="روب أمريكي كامل VIP" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">روب أمريكي كامل VIP</span>
-              <span class="pkg-desc">روب + وشاح + قبعة + مثلث أمريكي + تطريز على الظهر</span>
+              <div class="pkg-icon">🇺🇸</div>
+              <div class="pkg-text">
+                <span class="pkg-title">روب أمريكي كامل VIP</span>
+                <span class="pkg-desc">روب + وشاح + قبعة + مثلث أمريكي + تطريز ظهر</span>
+              </div>
             </div>
             <span class="pkg-price">80,000 د.ع</span>
           </div>
         </label>
 
         <label class="pkg-item">
-          <input type="radio" name="package" value="75000" data-title="روب ملكي كامل" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="75000" data-title="روب ملكي كامل" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">روب ملكي كامل</span>
-              <span class="pkg-desc">روب ملكي + وشاح ملكي + قبعة + تطريز على الظهر</span>
+              <div class="pkg-icon">✨</div>
+              <div class="pkg-text">
+                <span class="pkg-title">روب ملكي كامل</span>
+                <span class="pkg-desc">روب + وشاح ملكي + قبعة + تطريز ظهر</span>
+              </div>
             </div>
             <span class="pkg-price">75,000 د.ع</span>
           </div>
         </label>
 
         <label class="pkg-item">
-          <input type="radio" name="package" value="70000" data-title="مكس جانبي" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="70000" data-title="روب كلاسيكي عادي" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">موديل مكس جانبي</span>
-              <span class="pkg-desc">تصميم عصري بقصات جانبية مميزة</span>
+              <div class="pkg-icon">🎓</div>
+              <div class="pkg-text">
+                <span class="pkg-title">روب كلاسيكي عادي كامل</span>
+                <span class="pkg-desc">روب + وشاح + قبعة (بدون تطريز ظهر)</span>
+              </div>
             </div>
             <span class="pkg-price">70,000 د.ع</span>
           </div>
         </label>
 
+        <!-- القطع المفردة -->
         <label class="pkg-item">
-          <input type="radio" name="package" value="70000" data-title="روب عادي كلاسيكي كامل" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="35000" data-title="روب منفرد فقط" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">روب عادي كلاسيكي كامل</span>
-              <span class="pkg-desc">روب + وشاح + قبعة (بدون تطريز ظهر)</span>
-            </div>
-            <span class="pkg-price">70,000 د.ع</span>
-          </div>
-        </label>
-
-        <label class="pkg-item">
-          <input type="radio" name="package" value="65000" data-title="تفصيل خاص ملكي" onchange="updatePrice()">
-          <div class="pkg-box">
-            <div class="pkg-info">
-              <span class="pkg-title">تفصيل ملكي خاص</span>
-              <span class="pkg-desc">قماش وتفصيل ملكي فاخر</span>
-            </div>
-            <span class="pkg-price">65,000 د.ع</span>
-          </div>
-        </label>
-
-        <label class="pkg-item">
-          <input type="radio" name="package" value="60000" data-title="تفصيل عادي" onchange="updatePrice()">
-          <div class="pkg-box">
-            <div class="pkg-info">
-              <span class="pkg-title">تفصيل عادي</span>
-              <span class="pkg-desc">تفصيل قياسي كلاسيكي</span>
-            </div>
-            <span class="pkg-price">60,000 د.ع</span>
-          </div>
-        </label>
-
-        <label class="pkg-item">
-          <input type="radio" name="package" value="35000" data-title="روب منفرد فقط" onchange="updatePrice()">
-          <div class="pkg-box">
-            <div class="pkg-info">
-              <span class="pkg-title">روب منفرد فقط</span>
-              <span class="pkg-desc">بدون وشاح أو قبعة</span>
+              <div class="pkg-icon">🧥</div>
+              <div class="pkg-text">
+                <span class="pkg-title">روب منفرد فقط</span>
+                <span class="pkg-desc">قطعة الروب بدون ملحقات</span>
+              </div>
             </div>
             <span class="pkg-price">35,000 د.ع</span>
           </div>
         </label>
 
         <label class="pkg-item">
-          <input type="radio" name="package" value="25000" data-title="وشاح ملكي منفرد" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="25000" data-title="وشاح ملكي منفرد" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">وشاح ملكي منفرد</span>
-              <span class="pkg-desc">وشاح ملكي فقط</span>
+              <div class="pkg-icon">🧣</div>
+              <div class="pkg-text">
+                <span class="pkg-title">وشاح ملكي منفرد</span>
+                <span class="pkg-desc">وشاح بخامة ملكية</span>
+              </div>
             </div>
             <span class="pkg-price">25,000 د.ع</span>
           </div>
         </label>
 
         <label class="pkg-item">
-          <input type="radio" name="package" value="20000" data-title="قبعة ملكية منفردة" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="20000" data-title="قبعة ملكية منفردة" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">قبعة ملكية منفردة</span>
-              <span class="pkg-desc">قبعة تخرج ملكية فقط</span>
+              <div class="pkg-icon">🎓</div>
+              <div class="pkg-text">
+                <span class="pkg-title">قبعة ملكية منفردة</span>
+              </div>
             </div>
             <span class="pkg-price">20,000 د.ع</span>
           </div>
         </label>
 
         <label class="pkg-item">
-          <input type="radio" name="package" value="15000" data-title="وشاح عادي منفرد" onchange="updatePrice()">
+          <input type="checkbox" class="order-item" value="10000" data-title="مثلث أمريكي منفرد" onchange="updatePrice()">
           <div class="pkg-box">
             <div class="pkg-info">
-              <span class="pkg-title">وشاح عادي منفرد</span>
-              <span class="pkg-desc">وشاح تخرج قياسي</span>
-            </div>
-            <span class="pkg-price">15,000 د.ع</span>
-          </div>
-        </label>
-
-        <label class="pkg-item">
-          <input type="radio" name="package" value="10000" data-title="مثلث أمريكي منفرد" onchange="updatePrice()">
-          <div class="pkg-box">
-            <div class="pkg-info">
-              <span class="pkg-title">مثلث أمريكي منفرد</span>
-              <span class="pkg-desc">قطعة المثلث الأمريكي فقط</span>
+              <div class="pkg-icon">🔺</div>
+              <div class="pkg-text">
+                <span class="pkg-title">مثلث أمريكي منفرد</span>
+              </div>
             </div>
             <span class="pkg-price">10,000 د.ع</span>
           </div>
@@ -711,73 +709,48 @@
       </div>
     </div>
 
-    <!-- القسم 4: الألوان بالمربعات -->
+    <!-- القسم 3: الألوان -->
     <div class="card-section">
       <div class="section-header">
-        <span class="step-badge">4</span>
-        <span class="section-title">اختيار ألوان القماش (اضغط على المربع)</span>
+        <span class="step-badge">3</span>
+        <span class="section-title">اختيار ألوان القماش</span>
       </div>
 
       <label class="field-label">أولاً: لون قماش الروب الأساسي *</label>
-      <div class="color-grid" style="margin-bottom: 22px;">
+      <div class="color-grid">
         <label class="color-option">
           <input type="radio" name="robeColor" value="أسود ملكي" checked>
           <span class="swatch" style="background: #1A1A1A;"></span>
           <span class="color-label">أسود ملكي</span>
         </label>
         <label class="color-option">
-          <input type="radio" name="robeColor" value="كحلي / نيلي">
+          <input type="radio" name="robeColor" value="كحلي داكن">
           <span class="swatch" style="background: #1B2A4A;"></span>
-          <span class="color-label">كحلي داكن</span>
+          <span class="color-label">كحلي</span>
         </label>
         <label class="color-option">
-          <input type="radio" name="robeColor" value="ماروني / خمري">
+          <input type="radio" name="robeColor" value="ماروني">
           <span class="swatch" style="background: #6B1D2F;"></span>
           <span class="color-label">ماروني</span>
         </label>
         <label class="color-option">
           <input type="radio" name="robeColor" value="أخضر نفطي">
           <span class="swatch" style="background: #1C4436;"></span>
-          <span class="color-label">أخضر نفطي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="robeColor" value="زيتي عسكري">
-          <span class="swatch" style="background: #3F4A3C;"></span>
-          <span class="color-label">زيتي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="robeColor" value="بني شوكولا">
-          <span class="swatch" style="background: #422E27;"></span>
-          <span class="color-label">بني غامق</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="robeColor" value="أوف وايت">
-          <span class="swatch" style="background: #E5DDD1;"></span>
-          <span class="color-label">أوف وايت</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="robeColor" value="أبيض ناصع">
-          <span class="swatch" style="background: #F8F9FA;"></span>
-          <span class="color-label">أبيض</span>
+          <span class="color-label">أخضر</span>
         </label>
       </div>
 
-      <label class="field-label">ثانياً: لون قماش الوشاح والتطعيمات *</label>
+      <label class="field-label" style="margin-top: 10px;">ثانياً: لون قماش الوشاح أو التطعيمات *</label>
       <div class="color-grid">
         <label class="color-option">
-          <input type="radio" name="scarfColor" value="ماروني / خمري" checked>
+          <input type="radio" name="scarfColor" value="ماروني" checked>
           <span class="swatch" style="background: #6B1D2F;"></span>
           <span class="color-label">ماروني</span>
         </label>
         <label class="color-option">
-          <input type="radio" name="scarfColor" value="أحمر كلاسيك">
-          <span class="swatch" style="background: #B82626;"></span>
-          <span class="color-label">أحمر</span>
-        </label>
-        <label class="color-option">
           <input type="radio" name="scarfColor" value="أزرق ملكي">
           <span class="swatch" style="background: #185ADB;"></span>
-          <span class="color-label">أزرق ملكي</span>
+          <span class="color-label">أزرق</span>
         </label>
         <label class="color-option">
           <input type="radio" name="scarfColor" value="سمائي">
@@ -785,59 +758,9 @@
           <span class="color-label">سمائي</span>
         </label>
         <label class="color-option">
-          <input type="radio" name="scarfColor" value="كحلي / نيلي">
-          <span class="swatch" style="background: #1B2A4A;"></span>
-          <span class="color-label">كحلي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="أخضر نفطي">
-          <span class="swatch" style="background: #1C4436;"></span>
-          <span class="color-label">أخضر نفطي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="زيتي عسكري">
-          <span class="swatch" style="background: #3F4A3C;"></span>
-          <span class="color-label">زيتي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="باذنجاني داكن">
-          <span class="swatch" style="background: #432344;"></span>
-          <span class="color-label">باذنجاني</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="لافندر فاتح">
-          <span class="swatch" style="background: #A89BB9;"></span>
-          <span class="color-label">لافندر</span>
-        </label>
-        <label class="color-option">
           <input type="radio" name="scarfColor" value="وردي مغبر">
           <span class="swatch" style="background: #A46877;"></span>
-          <span class="color-label">وردي مغبر</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="عسلي / جملي">
-          <span class="swatch" style="background: #A8652B;"></span>
-          <span class="color-label">عسلي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="بيج حنطاوي">
-          <span class="swatch" style="background: #CDB296;"></span>
-          <span class="color-label">بيج</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="خاكي ترابي">
-          <span class="swatch" style="background: #6E5D4F;"></span>
-          <span class="color-label">خاكي</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="بني شوكولا">
-          <span class="swatch" style="background: #422E27;"></span>
-          <span class="color-label">بني</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="أوف وايت">
-          <span class="swatch" style="background: #E5DDD1;"></span>
-          <span class="color-label">أوف وايت</span>
+          <span class="color-label">وردي</span>
         </label>
         <label class="color-option">
           <input type="radio" name="scarfColor" value="أبيض ناصع">
@@ -845,29 +768,21 @@
           <span class="color-label">أبيض</span>
         </label>
         <label class="color-option">
-          <input type="radio" name="scarfColor" value="رصاصي فضي">
+          <input type="radio" name="scarfColor" value="رصاصي">
           <span class="swatch" style="background: #BDC3C7;"></span>
-          <span class="color-label">رصاصي فاتح</span>
-        </label>
-        <label class="color-option">
-          <input type="radio" name="scarfColor" value="رصاصي متوسط">
-          <span class="swatch" style="background: #7F8C8D;"></span>
           <span class="color-label">رصاصي</span>
         </label>
       </div>
     </div>
 
-    <!-- القسم 5: التطريزات الأساسية التفاعلية (ضع صح ليفتح المربع) -->
+    <!-- القسم 4: التطريزات والإضافات (المدمجة) -->
     <div class="card-section">
       <div class="section-header">
-        <span class="step-badge">5</span>
-        <span class="section-title">تخصيص التطريز الأساسي (ضع ✓ لكتابة النص)</span>
+        <span class="step-badge">4</span>
+        <span class="section-title">لمسات وتطريزات مخصصة (اضغط للإضافة)</span>
       </div>
-      <p style="font-size: 13px; color: var(--muted); margin-bottom: 14px;">
-        اضغط على المكان الذي ترغب بتطريزه ليظهر لك مربع الكتابة وإرفاق الشعار:
-      </p>
 
-      <!-- وشاح يمين -->
+      <!-- المجانية -->
       <div class="interactive-card" id="card_scarfR">
         <div class="check-header" onclick="toggleCard('card_scarfR', 'chk_scarfR')">
           <div class="check-title-wrap">
@@ -875,19 +790,13 @@
             <div class="custom-checkbox"></div>
             <span class="item-name">تطريز الوشاح — الجهة اليمنى</span>
           </div>
-          <span class="badge-tag badge-free">ضمن البكج</span>
+          <span class="badge-tag badge-free">مشمول بالبكج</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">النص المطلوب تطريزه على يمين الوشاح:</label>
-          <input type="text" id="txt_scarfR" placeholder="مثال: الاسم الثلاثي / القسم">
-          <div class="file-upload-box">
-            <label>📎 إرفاق شعار الكلية أو صورة لليمين (اختياري):</label>
-            <input type="file" id="file_scarfR" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_scarfR" placeholder="اكتب الاسم أو التخصص هنا...">
         </div>
       </div>
 
-      <!-- وشاح يسار -->
       <div class="interactive-card" id="card_scarfL">
         <div class="check-header" onclick="toggleCard('card_scarfL', 'chk_scarfL')">
           <div class="check-title-wrap">
@@ -895,19 +804,13 @@
             <div class="custom-checkbox"></div>
             <span class="item-name">تطريز الوشاح — الجهة اليسرى</span>
           </div>
-          <span class="badge-tag badge-free">ضمن البكج</span>
+          <span class="badge-tag badge-free">مشمول بالبكج</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">النص المطلوب تطريزه على يسار الوشاح:</label>
-          <input type="text" id="txt_scarfL" placeholder="مثال: العبارة أو سنة التخرج 2026">
-          <div class="file-upload-box">
-            <label>📎 إرفاق شعار أو صورة لليسار (اختياري):</label>
-            <input type="file" id="file_scarfL" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_scarfL" placeholder="اكتب العبارة المطلوبة هنا...">
         </div>
       </div>
 
-      <!-- ظهر الروب -->
       <div class="interactive-card" id="card_back">
         <div class="check-header" onclick="toggleCard('card_back', 'chk_back')">
           <div class="check-title-wrap">
@@ -915,165 +818,97 @@
             <div class="custom-checkbox"></div>
             <span class="item-name">تطريز ظهر الروب</span>
           </div>
-          <span class="badge-tag badge-free">ضمن البكج الملكي/الأمريكي</span>
+          <span class="badge-tag badge-free">مشمول بالبكج</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">النص أو التصميم المطلوب على ظهر الروب:</label>
-          <input type="text" id="txt_back" placeholder="مثال: Class of 2026 أو اسم الكلية">
-          <div class="file-upload-box">
-            <label>📎 إرفاق تصميم خاص للظهر (اختياري):</label>
-            <input type="file" id="file_back" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_back" placeholder="مثال: Class of 2026">
         </div>
       </div>
 
-      <!-- القبعة -->
       <div class="interactive-card" id="card_cap">
         <div class="check-header" onclick="toggleCard('card_cap', 'chk_cap')">
           <div class="check-title-wrap">
             <input type="checkbox" id="chk_cap" hidden>
             <div class="custom-checkbox"></div>
-            <span class="item-name">تطريز قبعة التخرج</span>
+            <span class="item-name">تطريز القبعة</span>
           </div>
-          <span class="badge-tag badge-free">ضمن البكج</span>
+          <span class="badge-tag badge-free">مشمول بالبكج</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">النص المطلوب تطريزه على القبعة:</label>
-          <input type="text" id="txt_cap" placeholder="مثال: 2026 أو اللقب">
-          <div class="file-upload-box">
-            <label>📎 إرفاق شعار أو رمز للقبعة (اختياري):</label>
-            <input type="file" id="file_cap" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_cap" placeholder="مثال: 2026 أو الحرف الأول">
         </div>
       </div>
-    </div>
 
-    <!-- القسم 6: الإضافات الخاصة خارج البكج (تزيد السعر تلقائياً) -->
-    <div class="card-section">
-      <div class="section-header">
-        <span class="step-badge">6</span>
-        <span class="section-title">الإضافات الخاصة (خارج البكج)</span>
-      </div>
-      <p style="font-size: 13px; color: var(--muted); margin-bottom: 14px;">
-        اختر الإضافات التي ترغب بها وسيتم إضافتها لحساب الفاتورة تلقائياً:
-      </p>
-
-      <!-- تطريز ردن يمين -->
+      <!-- المدفوعة -->
       <div class="interactive-card" id="card_sleeveR">
         <div class="check-header" onclick="toggleCard('card_sleeveR', 'chk_sleeveR', true)">
           <div class="check-title-wrap">
-            <input type="checkbox" id="chk_sleeveR" data-price="5000" hidden>
+            <input type="checkbox" id="chk_sleeveR" class="addon-item" data-price="5000" hidden>
             <div class="custom-checkbox"></div>
             <span class="item-name">تطريز ردن (كم) الروب — اليمين</span>
           </div>
           <span class="badge-tag badge-paid">+5,000 د.ع</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">اكتب النص أو الرمز المطلوب على الردن الأيمن:</label>
-          <input type="text" id="txt_sleeveR" placeholder="اكتب العبارة أو التاريخ هنا...">
-          <div class="file-upload-box">
-            <label>📎 إرفاق صورة النقشة أو الرمز للردن الأيمن (اختياري):</label>
-            <input type="file" id="file_sleeveR" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_sleeveR" placeholder="اكتب ما ترغب بتطريزه...">
         </div>
       </div>
 
-      <!-- تطريز ردن يسار -->
       <div class="interactive-card" id="card_sleeveL">
         <div class="check-header" onclick="toggleCard('card_sleeveL', 'chk_sleeveL', true)">
           <div class="check-title-wrap">
-            <input type="checkbox" id="chk_sleeveL" data-price="5000" hidden>
+            <input type="checkbox" id="chk_sleeveL" class="addon-item" data-price="5000" hidden>
             <div class="custom-checkbox"></div>
             <span class="item-name">تطريز ردن (كم) الروب — اليسار</span>
           </div>
           <span class="badge-tag badge-paid">+5,000 د.ع</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">اكتب النص أو الرمز المطلوب على الردن الأيسر:</label>
-          <input type="text" id="txt_sleeveL" placeholder="اكتب العبارة أو التاريخ هنا...">
-          <div class="file-upload-box">
-            <label>📎 إرفاق صورة النقشة أو الرمز للردن الأيسر (اختياري):</label>
-            <input type="file" id="file_sleeveL" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_sleeveL" placeholder="اكتب ما ترغب بتطريزه...">
         </div>
       </div>
 
-      <!-- إضافة دانتيل على الوشاح -->
       <div class="interactive-card" id="card_lace">
         <div class="check-header" onclick="toggleCard('card_lace', 'chk_lace', true)">
           <div class="check-title-wrap">
-            <input type="checkbox" id="chk_lace" data-price="10000" hidden>
+            <input type="checkbox" id="chk_lace" class="addon-item" data-price="10000" hidden>
             <div class="custom-checkbox"></div>
-            <span class="item-name">إضافة دانتيل فاخر على الوشاح</span>
+            <span class="item-name">إضافة دانتيل فاخر للوشاح</span>
           </div>
           <span class="badge-tag badge-paid">+10,000 د.ع</span>
         </div>
         <div class="expandable-body">
-          <label class="field-label">ملاحظات حول لون أو شكل الدانتيل المطلوب (اختياري):</label>
-          <input type="text" id="txt_lace" placeholder="مثال: دانتيل ذهبي / فضي / نفس لون الوشاح">
-        </div>
-      </div>
-
-      <!-- إضافة خاصة أخرى -->
-      <div class="interactive-card" id="card_extra">
-        <div class="check-header" onclick="toggleCard('card_extra', 'chk_extra', true)">
-          <div class="check-title-wrap">
-            <input type="checkbox" id="chk_extra" data-price="5000" hidden>
-            <div class="custom-checkbox"></div>
-            <span class="item-name">إضافة تطريز أو تفصيل إضافي آخر</span>
-          </div>
-          <span class="badge-tag badge-paid">+5,000 د.ع</span>
-        </div>
-        <div class="expandable-body">
-          <label class="field-label">وضح الإضافة المطلوبة ومكانها:</label>
-          <input type="text" id="txt_extra" placeholder="اكتب تفاصيل الإضافة المطلوبة هنا...">
-          <div class="file-upload-box">
-            <label>📎 إرفاق صورة توضيحية (اختياري):</label>
-            <input type="file" id="file_extra" accept="image/*,.pdf">
-          </div>
+          <input type="text" id="txt_lace" placeholder="لون أو شكل الدانتيل المطلوب...">
         </div>
       </div>
     </div>
 
-    <!-- القسم 7: ملاحظات ختامية -->
-    <div class="card-section">
-      <div class="section-header">
-        <span class="step-badge">7</span>
-        <span class="section-title">ملاحظات عامة للمعمل</span>
-      </div>
-      <div class="form-group">
-        <textarea id="generalNotes" rows="3" placeholder="إذا كان لديك أي ملاحظة إضافية للخياط أو قسم التطريز اكتبها هنا..."></textarea>
-      </div>
-      <div class="note-box">
-        ⚠️ يرجى التأكد من الإملاء الصحيح للأسماء والتواريخ؛ التطريز يتم آلياً حسب ما تم تدوينه في الحقول أعلاه.
-      </div>
-    </div>
-
-    <!-- الشريط السفلي الثابت -->
+    <!-- الشريط السفلي -->
     <div class="sticky-footer">
       <div class="footer-inner">
         <div class="total-info">
-          <span class="total-label">المبلغ الإجمالي المستحق</span>
-          <span class="total-amount" id="totalPriceText">80,000 د.ع</span>
+          <span class="total-label">المجموع الإجمالي</span>
+          <span class="total-amount" id="totalPriceText">0 د.ع</span>
+          <span class="delivery-note">يُضاف 5,000 د.ع أجور توصيل</span>
         </div>
-        <button type="submit" class="submit-btn">إرسال وتأكيد الطلب ✓</button>
+        <button type="submit" class="submit-btn">إرسال وتأكيد ✓</button>
       </div>
     </div>
 
   </form>
 </div>
 
-<!-- نافذة تأكيد الطلب -->
+<!-- نافذة التأكيد -->
 <div class="modal-overlay" id="summaryModal">
   <div class="modal-box">
-    <div class="modal-title">✅ تم تجهيز تفاصيل طلبك بنجاح!</div>
+    <div class="modal-title">✅ تم إعداد الفاتورة بنجاح</div>
     <div class="summary-content" id="orderSummaryText"></div>
     <button class="close-btn" onclick="closeModal()">حسناً، إغلاق</button>
   </div>
 </div>
 
 <script>
-  // فتح وإغلاق المربعات التفاعلية عند وضع علامة صح
+  // فتح وإغلاق البطاقات التفاعلية
   function toggleCard(cardId, checkboxId, affectsPrice = false) {
     const card = document.getElementById(cardId);
     const checkbox = document.getElementById(checkboxId);
@@ -1085,89 +920,65 @@
       card.classList.remove('active');
     }
 
-    if (affectsPrice) {
-      updatePrice();
-    }
+    if (affectsPrice) updatePrice();
   }
 
-  // حساب السعر الإجمالي لحظياً
+  // الحساب التلقائي الشامل
   function updatePrice() {
-    const selectedPkg = document.querySelector('input[name="package"]:checked');
-    let basePrice = selectedPkg ? parseInt(selectedPkg.value) : 0;
-
-    let addonsPrice = 0;
-    const paidCheckboxes = ['chk_sleeveR', 'chk_sleeveL', 'chk_lace', 'chk_extra'];
-
-    paidCheckboxes.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.checked) {
-        addonsPrice += parseInt(el.getAttribute('data-price'));
-      }
+    let total = 0;
+    
+    // جمع البكجات والقطع المحددة
+    const orderItems = document.querySelectorAll('.order-item:checked');
+    orderItems.forEach(item => {
+      total += parseInt(item.value);
     });
 
-    const total = basePrice + addonsPrice;
+    // جمع الإضافات المدفوعة
+    const addons = document.querySelectorAll('.addon-item:checked');
+    addons.forEach(item => {
+      total += parseInt(item.getAttribute('data-price'));
+    });
+
+    // إضافة التوصيل فقط إذا كان هناك طلب
+    if (total > 0) {
+      total += 5000; // أجور التوصيل
+    }
+
     document.getElementById('totalPriceText').innerText = total.toLocaleString('en-US') + ' د.ع';
     return total;
   }
 
-  // معالجة إرسال النموذج وعرض الملخص
+  // الإرسال والملخص
   function handleFormSubmit(e) {
     e.preventDefault();
-
-    const name = document.getElementById('studentName').value;
-    const phone = document.getElementById('studentPhone').value;
-    const city = document.getElementById('studentCity').value;
-    const univ = document.getElementById('studentUniv').value;
-    const height = document.getElementById('heightCm').value;
-    const weight = document.getElementById('weightKg').value;
-
-    const pkgEl = document.querySelector('input[name="package"]:checked');
-    const pkgTitle = pkgEl.getAttribute('data-title');
-
-    const robeColor = document.querySelector('input[name="robeColor"]:checked').value;
-    const scarfColor = document.querySelector('input[name="scarfColor"]:checked').value;
-
-    let details = `👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 العنوان: ${city}\n🏛 الجامعة: ${univ}\n`;
-    details += `📏 القياس: الطول ${height} سم | الوزن ${weight} كغم\n`;
-    details += `📦 الباقة: ${pkgTitle}\n`;
-    details += `🎨 لون الروب: ${robeColor} | لون الوشاح: ${scarfColor}\n\n`;
-
-    details += `🧵 التطريزات المختارة:\n`;
-    if (document.getElementById('chk_scarfR').checked) {
-      details += `- وشاح يمين: ${document.getElementById('txt_scarfR').value || 'مرفق صورة/بدون نص'}\n`;
-    }
-    if (document.getElementById('chk_scarfL').checked) {
-      details += `- وشاح يسار: ${document.getElementById('txt_scarfL').value || 'مرفق صورة/بدون نص'}\n`;
-    }
-    if (document.getElementById('chk_back').checked) {
-      details += `- ظهر الروب: ${document.getElementById('txt_back').value || 'مرفق صورة/بدون نص'}\n`;
-    }
-    if (document.getElementById('chk_cap').checked) {
-      details += `- القبعة: ${document.getElementById('txt_cap').value || 'مرفق صورة/بدون نص'}\n`;
+    const finalTotal = updatePrice();
+    
+    if (finalTotal === 0) {
+      alert("يرجى اختيار بكج أو قطعة واحدة على الأقل قبل الإرسال.");
+      return;
     }
 
-    details += `\n➕ الإضافات الخاصة:\n`;
-    let hasAddons = false;
-    if (document.getElementById('chk_sleeveR').checked) {
-      details += `- ردن يمين (+5,000): ${document.getElementById('txt_sleeveR').value}\n`;
-      hasAddons = true;
-    }
-    if (document.getElementById('chk_sleeveL').checked) {
-      details += `- ردن يسار (+5,000): ${document.getElementById('txt_sleeveL').value}\n`;
-      hasAddons = true;
-    }
-    if (document.getElementById('chk_lace').checked) {
-      details += `- دانتيل على الوشاح (+10,000): ${document.getElementById('txt_lace').value || 'نعم'}\n`;
-      hasAddons = true;
-    }
-    if (document.getElementById('chk_extra').checked) {
-      details += `- إضافة أخرى (+5,000): ${document.getElementById('txt_extra').value}\n`;
-      hasAddons = true;
-    }
-    if (!hasAddons) details += `- لا توجد إضافات خارجية\n`;
+    let details = `👤 الاسم: ${document.getElementById('studentName').value}\n📞 الهاتف: ${document.getElementById('studentPhone').value}\n📍 العنوان: ${document.getElementById('studentCity').value}\n🏛 الجامعة: ${document.getElementById('studentUniv').value}\n`;
+    details += `📏 الطول: ${document.getElementById('heightCm').value} سم | الوزن: ${document.getElementById('weightKg').value} كغم\n\n`;
 
-    const total = updatePrice();
-    details += `\n💰 المبلغ الإجمالي النهائي: ${total.toLocaleString('en-US')} د.ع`;
+    details += `📦 الطلبات الأساسية:\n`;
+    const orderItems = document.querySelectorAll('.order-item:checked');
+    orderItems.forEach(item => {
+      details += `- ${item.getAttribute('data-title')}\n`;
+    });
+
+    details += `\n🎨 لون الروب: ${document.querySelector('input[name="robeColor"]:checked').value} | لون الوشاح: ${document.querySelector('input[name="scarfColor"]:checked').value}\n\n`;
+
+    details += `🧵 التطريزات والإضافات:\n`;
+    if (document.getElementById('chk_scarfR').checked) details += `- وشاح يمين: ${document.getElementById('txt_scarfR').value}\n`;
+    if (document.getElementById('chk_scarfL').checked) details += `- وشاح يسار: ${document.getElementById('txt_scarfL').value}\n`;
+    if (document.getElementById('chk_back').checked) details += `- ظهر الروب: ${document.getElementById('txt_back').value}\n`;
+    if (document.getElementById('chk_cap').checked) details += `- القبعة: ${document.getElementById('txt_cap').value}\n`;
+    if (document.getElementById('chk_sleeveR').checked) details += `- ردن يمين: ${document.getElementById('txt_sleeveR').value}\n`;
+    if (document.getElementById('chk_sleeveL').checked) details += `- ردن يسار: ${document.getElementById('txt_sleeveL').value}\n`;
+    if (document.getElementById('chk_lace').checked) details += `- إضافة دانتيل: نعم\n`;
+
+    details += `\n🚚 أجور التوصيل: 5,000 د.ع\n💰 المبلغ الإجمالي النهائي: ${finalTotal.toLocaleString('en-US')} د.ع`;
 
     document.getElementById('orderSummaryText').innerText = details;
     document.getElementById('summaryModal').style.display = 'flex';
